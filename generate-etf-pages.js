@@ -366,10 +366,6 @@ function networkHtml() {
         <div class="card-icon">📆</div><div class="card-name">MonthlyPayout.com</div>
         <div class="card-desc">Match your dividend income to your monthly bills.</div>
       </a>
-      <a href="https://dividendstack.com" target="_blank" rel="noopener" class="network-card">
-        <div class="card-icon">🛠️</div><div class="card-name">DividendStack.com</div>
-        <div class="card-desc">Free calculators, screeners, and planning tools.</div>
-      </a>
       <a href="https://marvinsmx.github.io/yield-atlas-pro/" target="_blank" rel="noopener" class="network-card pro-card">
         <div class="card-icon">⭐</div><div class="card-name">YieldAtlasPro.com</div>
         <div class="card-desc">Deep data, advanced filters, tax grades, daily pro insights.</div>
