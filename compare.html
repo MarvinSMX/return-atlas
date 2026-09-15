@@ -85,10 +85,10 @@
     }
     </script>
 
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
+    <link rel="apple-touch-icon" sizes="180x180" href="/return-atlas/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/return-atlas/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/return-atlas/favicon-16x16.png">
+    <link rel="manifest" href="/return-atlas/site.webmanifest">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -425,8 +425,8 @@
     <header>
         <div class="container">
             <div class="header-content">
-                <a href="/" class="logo">📈 ReturnAtlas</a>
-                <a href="https://YieldAtlasPRO.com" target="_blank" class="premium-btn">🌟 Premium</a>
+                <a href="/return-atlas/" class="logo">📈 ReturnAtlas</a>
+                <a href="https://marvinsmx.github.io/yield-atlas-pro/" target="_blank" class="premium-btn">🌟 Premium</a>
             </div>
         </div>
     </header>
@@ -434,7 +434,7 @@
     <main>
         <section class="hero">
             <div class="container">
-                <a href="/" class="back-link">← Back to ETF Database</a>
+                <a href="/return-atlas/" class="back-link">← Back to ETF Database</a>
                 <h1>Free ETF Comparison Tool: Compare ETFs Side by Side</h1>
                 <p class="hero-subtitle">
                     Compare 2 ETFs head-to-head — or stack up to 8 at once — by <strong>average annual total return since inception</strong>. One fair number, no matter how old each fund is.<br><br>
@@ -449,7 +449,7 @@
         <section class="section">
             <div class="container">
 
-                <a href="https://YieldAtlasPRO.com" target="_blank" rel="noopener" class="pro-bar">
+                <a href="https://marvinsmx.github.io/yield-atlas-pro/" target="_blank" rel="noopener" class="pro-bar">
                   <div class="pro-bar-left">
                     <span class="pro-badge">PRO</span>
                     <div class="pro-bar-copy">
@@ -496,7 +496,7 @@
         </section>
 
         <div class="container">
-            <a href="https://YieldAtlasPRO.com" target="_blank" rel="noopener" class="pro-card-promo">
+            <a href="https://marvinsmx.github.io/yield-atlas-pro/" target="_blank" rel="noopener" class="pro-card-promo">
               <span class="pro-badge">PRO</span>
               <h3>The full ETF terminal, updated every day</h3>
               <p>This page gives you yields and total returns. YieldAtlasPRO.com gives you everything else &mdash; the data set behind the whole network, in one filterable, sortable terminal.</p>
@@ -585,19 +585,19 @@
                 <h2 class="network-title">More Dividend Investing Resources</h2>
                 <p class="network-subtitle">Built by dividend investors. For dividend investors.</p>
                 <div class="site-cards-grid">
-                    <a href="https://yieldatlas.com" class="network-card">
+                    <a href="https://marvinsmx.github.io/yield-atlas/" class="network-card">
                         <div class="card-icon">📊</div>
                         <div class="card-name">YieldAtlas.com</div>
                         <div class="card-desc">Rankings of the top 100 dividend ETFs by yield, growth, and reliability. Find your best fit.</div>
                         <div class="card-btn">Browse Rankings →</div>
                     </a>
-                    <a href="https://weeklypayout.com" target="_blank" class="network-card">
+                    <a href="https://marvinsmx.github.io/weekly-payout/" target="_blank" class="network-card">
                         <div class="card-icon">📅</div>
                         <div class="card-name">WeeklyPayout.com</div>
                         <div class="card-desc">Prefer weekly income? Discover the best ETFs that pay dividends every single week.</div>
                         <div class="card-btn">See WeeklyPayout →</div>
                     </a>
-                    <a href="https://monthlypayout.com" target="_blank" class="network-card">
+                    <a href="https://marvinsmx.github.io/monthly-payout/" target="_blank" class="network-card">
                         <div class="card-icon">📆</div>
                         <div class="card-name">MonthlyPayout.com</div>
                         <div class="card-desc">The ultimate guide to monthly dividend ETFs — match your income to your monthly bills.</div>
@@ -609,7 +609,7 @@
                         <div class="card-desc">Free calculators, screeners, and planning tools for dividend investors of every level.</div>
                         <div class="card-btn">Try Free Tools →</div>
                     </a>
-                    <a href="https://yieldatlaspro.com" target="_blank" class="network-card pro-card">
+                    <a href="https://marvinsmx.github.io/yield-atlas-pro/" target="_blank" class="network-card pro-card">
                         <div class="card-pro-badge">Pro</div>
                         <div class="card-icon">📊</div>
                         <div class="card-name">YieldAtlasPro.com</div>
@@ -641,7 +641,7 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <script>
-const CSV_URL = 'data/seed.csv';
+const CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTxCiod-Cwry7E6k9Un9dgrM_ANymC36_IO_wLyNj-YDo2KI7mp_1ZzyNBnBGZOxT48QPM8TCwtsmA4/pub?gid=0&single=true&output=csv';
 
 let allFunds = [];
 let selected = [];
@@ -697,7 +697,7 @@ function fundBySymbol(sym) { return allFunds.find(f => f.symbol.toUpperCase() ==
 
 async function loadData() {
   try {
-    const res = await fetch(CSV_URL + '?t=' + Date.now());
+    const res = await fetch(CSV_URL + '&t=' + Date.now());
     const text = await res.text();
     allFunds = parseCSV(text);
     setupQuickButtons();

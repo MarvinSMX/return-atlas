@@ -15,10 +15,10 @@ const path = require('path');
 
 /* ════════════════ CONFIG ════════════════ */
 
-const CSV_URL = 'data/seed.csv';
+const CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTxCiod-Cwry7E6k9Un9dgrM_ANymC36_IO_wLyNj-YDo2KI7mp_1ZzyNBnBGZOxT48QPM8TCwtsmA4/pub?gid=0&single=true&output=csv';
 
 // The live domain — change once here if the domain ever changes.
-const BASE_URL = 'https://returnatlas.com';
+const BASE_URL = 'https://marvinsmx.github.io/return-atlas/';
 
 // Generate every pair among the top N funds by AUM.
 // 25 → 300 pages. 30 → 435. 40 → 780. Start moderate; raise later.
@@ -310,9 +310,9 @@ function headBlock({ title, description, canonicalPath }) {
     <meta name="twitter:description" content="${esc(description)}">
     <meta name="twitter:image" content="etf.png">
     <meta name="twitter:site" content="@YieldAtlas">
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/return-atlas/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/return-atlas/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/return-atlas/favicon-16x16.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700;900&display=swap" rel="stylesheet">
@@ -321,11 +321,11 @@ function headBlock({ title, description, canonicalPath }) {
 }
 
 const HEADER_HTML = `<header><div class="container"><div class="header-content">
-  <a href="/" class="logo">📈 ReturnAtlas</a>
-  <a href="https://YieldAtlasPRO.com" target="_blank" class="premium-btn">🌟 Premium</a>
+  <a href="/return-atlas/" class="logo">📈 ReturnAtlas</a>
+  <a href="https://marvinsmx.github.io/yield-atlas-pro/" target="_blank" class="premium-btn">🌟 Premium</a>
 </div></div></header>`;
 
-const PRO_BAR_HTML = `<a href="https://YieldAtlasPRO.com" target="_blank" rel="noopener" class="pro-bar">
+const PRO_BAR_HTML = `<a href="https://marvinsmx.github.io/yield-atlas-pro/" target="_blank" rel="noopener" class="pro-bar">
   <div class="pro-bar-left">
     <span class="pro-badge">PRO</span>
     <div class="pro-bar-copy">
@@ -336,7 +336,7 @@ const PRO_BAR_HTML = `<a href="https://YieldAtlasPRO.com" target="_blank" rel="n
   <span class="pro-bar-cta">Go PRO &rarr;</span>
 </a>`;
 
-const PRO_CARD_HTML = `<a href="https://YieldAtlasPRO.com" target="_blank" rel="noopener" class="pro-card-promo">
+const PRO_CARD_HTML = `<a href="https://marvinsmx.github.io/yield-atlas-pro/" target="_blank" rel="noopener" class="pro-card-promo">
   <span class="pro-badge">PRO</span>
   <h3>The full ETF terminal, updated every day</h3>
   <p>This page gives you yields and total returns. YieldAtlasPRO.com gives you everything else &mdash; the data set behind the whole network, in one filterable, sortable terminal.</p>
@@ -349,10 +349,10 @@ const PRO_CARD_HTML = `<a href="https://YieldAtlasPRO.com" target="_blank" rel="
 
 const FOOTER_HTML = `<footer><div class="container"><div class="footer-content">
   <div class="footer-links">
-    <a href="/terms.html">Terms of Use</a>
-    <a href="/privacy.html">Privacy Policy</a>
-    <a href="/faq.html">FAQ</a>
-    <a href="/disclaimer.html">Disclaimer</a>
+    <a href="/return-atlas/terms.html">Terms of Use</a>
+    <a href="/return-atlas/privacy.html">Privacy Policy</a>
+    <a href="/return-atlas/faq.html">FAQ</a>
+    <a href="/return-atlas/disclaimer.html">Disclaimer</a>
   </div>
   <div class="footer-disclaimer">
     This site is 100% free and for entertainment purposes only. All data is curated from public sources and may be inaccurate or delayed.
@@ -440,7 +440,7 @@ function matchupPage(a, b, relatedSlugs) {
     ? `<section class="section"><div class="container">
         <h2>Related ETF Comparisons</h2>
         <div class="related-grid">
-          ${relatedSlugs.map(r => `<a class="related-link" href="/vs/${r.slug}.html">${esc(r.label)}</a>`).join('\n          ')}
+          ${relatedSlugs.map(r => `<a class="related-link" href="/return-atlas/vs/${r.slug}.html">${esc(r.label)}</a>`).join('\n          ')}
         </div>
       </div></section>`
     : '';
@@ -452,7 +452,7 @@ ${headBlock({ title, description, canonicalPath })}
 ${HEADER_HTML}
 <main>
   <section class="hero"><div class="container">
-    <a href="/vs/" class="back-link">← All ETF Comparisons</a>
+    <a href="/return-atlas/vs/" class="back-link">← All ETF Comparisons</a>
     <h1>${esc(a.symbol)} vs ${esc(b.symbol)}: ETF Comparison</h1>
     <p class="hero-subtitle">
       Compare <strong>${esc(a.symbol)}</strong> (${esc(a.name)}) and <strong>${esc(b.symbol)}</strong> (${esc(b.name)}) side by side by
@@ -480,8 +480,8 @@ ${HEADER_HTML}
       </div>
     </div>
     <div class="cta-row">
-      <a class="btn btn-primary" href="/compare.html?tickers=${a.symbol},${b.symbol}">⚡ Open in Interactive Tool</a>
-      <a class="btn btn-outline" href="/vs/">Browse All Matchups</a>
+      <a class="btn btn-primary" href="/return-atlas/compare.html?tickers=${a.symbol},${b.symbol}">⚡ Open in Interactive Tool</a>
+      <a class="btn btn-outline" href="/return-atlas/vs/">Browse All Matchups</a>
     </div>
   </div></section>
 
@@ -547,11 +547,11 @@ ${headBlock({ title, description, canonicalPath: '/vs/' })}
 ${HEADER_HTML}
 <main>
   <section class="hero"><div class="container">
-    <a href="/compare.html" class="back-link">← Interactive Comparison Tool</a>
+    <a href="/return-atlas/compare.html" class="back-link">← Interactive Comparison Tool</a>
     <h1>ETF vs ETF: Every Comparison</h1>
     <p class="hero-subtitle">
       ${pairs.length} head-to-head ETF matchups, each compared by <strong>average annual total return since inception</strong>.
-      Pick a matchup or build your own in the <a href="/compare.html" style="color:var(--green-light);">interactive tool</a>.
+      Pick a matchup or build your own in the <a href="/return-atlas/compare.html" style="color:var(--green-light);">interactive tool</a>.
     </p>
     <p class="updated-tag">Updated ${updated}</p>
   </div></section>
@@ -561,7 +561,7 @@ ${HEADER_HTML}
   ${groups.map(g => `<section class="section"><div class="container">
     <h2>${esc(g)} Comparisons</h2>
     <div class="related-grid">
-      ${byFirst[g].map(p => `<a class="related-link" href="/vs/${p.slug}.html">${esc(p.a.symbol)} vs ${esc(p.b.symbol)}</a>`).join('\n      ')}
+      ${byFirst[g].map(p => `<a class="related-link" href="/return-atlas/vs/${p.slug}.html">${esc(p.a.symbol)} vs ${esc(p.b.symbol)}</a>`).join('\n      ')}
     </div>
   </div></section>`).join('\n')}
 </main>
@@ -579,7 +579,7 @@ async function main() {
     text = fs.readFileSync(process.env.LOCAL_CSV, 'utf8');
     console.log('(using LOCAL_CSV file for testing)');
   } else {
-    const res = await fetch(CSV_URL + '?t=' + Date.now());
+    const res = await fetch(CSV_URL + '&t=' + Date.now());
     if (!res.ok) throw new Error('CSV fetch failed: ' + res.status);
     text = await res.text();
   }

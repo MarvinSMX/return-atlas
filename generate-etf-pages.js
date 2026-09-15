@@ -12,10 +12,10 @@
 const fs = require('fs');
 const path = require('path');
 
-const CSV_URL = 'data/seed.csv';
+const CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTxCiod-Cwry7E6k9Un9dgrM_ANymC36_IO_wLyNj-YDo2KI7mp_1ZzyNBnBGZOxT48QPM8TCwtsmA4/pub?gid=0&single=true&output=csv';
 
 const OUT_DIR = path.join(__dirname, 'etf');
-const SITE = 'https://returnatlas.com';
+const SITE = 'https://marvinsmx.github.io/return-atlas/';
 
 /* ═══════════════════════════════════════════════════════════════
    MATCHUP TICKERS
@@ -36,7 +36,7 @@ const VS_TICKERS = [
    ═══════════════════════════════════════════════════════════════ */
 const PROMO = {
   enabled: true,
-  href: 'https://YieldAtlasPRO.com'
+  href: 'https://marvinsmx.github.io/yield-atlas-pro/'
 };
 
 /* ───────────────────────────── helpers ───────────────────────── */
@@ -310,11 +310,11 @@ function headerHtml() {
   return `<header>
     <div class="container">
       <div class="header-content">
-        <a href="/" class="logo">📈 ReturnAtlas</a>
+        <a href="/return-atlas/" class="logo">📈 ReturnAtlas</a>
         <div class="header-buttons">
-          <a href="/vs/" class="matchups-btn">🥊 ETF Matchups</a>
-          <a href="/compare.html" class="compare-btn">⚖️ Compare ETFs</a>
-          <a href="https://YieldAtlasPRO.com" target="_blank" rel="noopener" class="premium-btn">🌟 Premium</a>
+          <a href="/return-atlas/vs/" class="matchups-btn">🥊 ETF Matchups</a>
+          <a href="/return-atlas/compare.html" class="compare-btn">⚖️ Compare ETFs</a>
+          <a href="https://marvinsmx.github.io/yield-atlas-pro/" target="_blank" rel="noopener" class="premium-btn">🌟 Premium</a>
         </div>
       </div>
     </div>
@@ -354,15 +354,15 @@ function networkHtml() {
     <h2 class="sec-title">🌐 More Dividend Research</h2>
     <p class="sec-sub">Built by dividend investors. For dividend investors.</p>
     <div class="site-cards-grid">
-      <a href="https://yieldatlas.com" target="_blank" rel="noopener" class="network-card">
+      <a href="https://marvinsmx.github.io/yield-atlas/" target="_blank" rel="noopener" class="network-card">
         <div class="card-icon">📊</div><div class="card-name">YieldAtlas.com</div>
         <div class="card-desc">Rankings of the top dividend ETFs by yield, growth, and reliability.</div>
       </a>
-      <a href="https://weeklypayout.com" target="_blank" rel="noopener" class="network-card">
+      <a href="https://marvinsmx.github.io/weekly-payout/" target="_blank" rel="noopener" class="network-card">
         <div class="card-icon">📅</div><div class="card-name">WeeklyPayout.com</div>
         <div class="card-desc">Every ETF that pays a dividend each and every week.</div>
       </a>
-      <a href="https://monthlypayout.com" target="_blank" rel="noopener" class="network-card">
+      <a href="https://marvinsmx.github.io/monthly-payout/" target="_blank" rel="noopener" class="network-card">
         <div class="card-icon">📆</div><div class="card-name">MonthlyPayout.com</div>
         <div class="card-desc">Match your dividend income to your monthly bills.</div>
       </a>
@@ -370,7 +370,7 @@ function networkHtml() {
         <div class="card-icon">🛠️</div><div class="card-name">DividendStack.com</div>
         <div class="card-desc">Free calculators, screeners, and planning tools.</div>
       </a>
-      <a href="https://yieldatlaspro.com" target="_blank" rel="noopener" class="network-card pro-card">
+      <a href="https://marvinsmx.github.io/yield-atlas-pro/" target="_blank" rel="noopener" class="network-card pro-card">
         <div class="card-icon">⭐</div><div class="card-name">YieldAtlasPro.com</div>
         <div class="card-desc">Deep data, advanced filters, tax grades, daily pro insights.</div>
       </a>
@@ -383,13 +383,13 @@ function footerHtml() {
     <div class="container">
       <div class="footer-content">
         <div class="footer-links">
-          <a href="/">Home</a>
-          <a href="/etf/">All ETFs</a>
-          <a href="/vs/">ETF Comparisons</a>
-          <a href="/terms.html">Terms of Use</a>
-          <a href="/privacy.html">Privacy Policy</a>
-          <a href="/faq.html">FAQ</a>
-          <a href="/disclaimer.html">Disclaimer</a>
+          <a href="/return-atlas/">Home</a>
+          <a href="/return-atlas/etf/">All ETFs</a>
+          <a href="/return-atlas/vs/">ETF Comparisons</a>
+          <a href="/return-atlas/terms.html">Terms of Use</a>
+          <a href="/return-atlas/privacy.html">Privacy Policy</a>
+          <a href="/return-atlas/faq.html">FAQ</a>
+          <a href="/return-atlas/disclaimer.html">Disclaimer</a>
         </div>
         <div class="footer-disclaimer">
           This site is 100% free and for entertainment purposes only. All data is curated from public sources and may be inaccurate or delayed. Not financial advice. Past performance does not guarantee future results.
@@ -415,7 +415,7 @@ function buildEtfPage(e, all) {
     const opponents = VS_TICKERS.filter(t => t !== me).slice(0, 24);
     vsCards = opponents.map(op => {
       const pair = [me.toLowerCase(), op.toLowerCase()].sort();
-      return `<a class="vs-card" href="/vs/${pair[0]}-vs-${pair[1]}.html">
+      return `<a class="vs-card" href="/return-atlas/vs/${pair[0]}-vs-${pair[1]}.html">
         <span class="pair">${esc(me)} vs ${esc(op)}</span><span class="go">→</span></a>`;
     }).join('\n');
   }
@@ -424,11 +424,11 @@ function buildEtfPage(e, all) {
     <h2 class="sec-title">🥊 ${esc(e.symbol)} Head-to-Head</h2>
     <p class="sec-sub">See how ${esc(e.symbol)} stacks up against the funds investors compare it with most, measured on average annual total return since inception.</p>
     <div class="vs-grid">${vsCards}</div>
-    <p style="margin-top:20px"><a href="/vs/" class="compare-btn">Browse all 300+ ETF matchups →</a></p>
+    <p style="margin-top:20px"><a href="/return-atlas/vs/" class="compare-btn">Browse all 300+ ETF matchups →</a></p>
   </section>` : `<section class="section">
     <h2 class="sec-title">🥊 Compare ETFs Head-to-Head</h2>
     <p class="sec-sub">Put ${esc(e.symbol)} up against another fund on total return, yield, and annualized performance.</p>
-    <p><a href="/vs/" class="compare-btn">Browse all 300+ ETF matchups →</a></p>
+    <p><a href="/return-atlas/vs/" class="compare-btn">Browse all 300+ ETF matchups →</a></p>
   </section>`;
 
   /* --- similar yield band --- */
@@ -443,8 +443,8 @@ function buildEtfPage(e, all) {
       <table class="peer-table">
         <thead><tr><th>Symbol</th><th>Name</th><th class="c">Yield</th><th class="c">Annualized</th><th class="c">Grade</th></tr></thead>
         <tbody>
-        ${similar.map(x => `<tr onclick="location.href='/etf/${slug(x.symbol)}.html'">
-          <td><a href="/etf/${slug(x.symbol)}.html">${esc(x.symbol)}</a></td>
+        ${similar.map(x => `<tr onclick="location.href='/return-atlas/etf/${slug(x.symbol)}.html'">
+          <td><a href="/return-atlas/etf/${slug(x.symbol)}.html">${esc(x.symbol)}</a></td>
           <td class="peer-name">${esc(x.name)}</td>
           <td class="c">${esc(x.yieldRaw)}</td>
           <td class="c ${x.annual >= 0 ? 'pos' : 'neg'}">${fmtPct(x.annual)}</td>
@@ -465,9 +465,9 @@ function buildEtfPage(e, all) {
       <table class="peer-table">
         <thead><tr><th>#</th><th>Symbol</th><th>Name</th><th class="c">Yield</th><th class="c">Annualized</th></tr></thead>
         <tbody>
-        ${top.map((x, i) => `<tr onclick="location.href='/etf/${slug(x.symbol)}.html'">
+        ${top.map((x, i) => `<tr onclick="location.href='/return-atlas/etf/${slug(x.symbol)}.html'">
           <td class="c" style="color:var(--text-muted)">${i + 1}</td>
-          <td><a href="/etf/${slug(x.symbol)}.html">${esc(x.symbol)}</a></td>
+          <td><a href="/return-atlas/etf/${slug(x.symbol)}.html">${esc(x.symbol)}</a></td>
           <td class="peer-name">${esc(x.name)}</td>
           <td class="c">${esc(x.yieldRaw)}</td>
           <td class="c ${x.annual >= 0 ? 'pos' : 'neg'}">${fmtPct(x.annual)}</td></tr>`).join('\n')}
@@ -478,7 +478,7 @@ function buildEtfPage(e, all) {
 
   /* --- A-Z chips --- */
   const azChips = all.filter(x => x.symbol !== e.symbol)
-    .map(x => `<a class="az-chip" href="/etf/${slug(x.symbol)}.html">${esc(x.symbol)}</a>`).join('');
+    .map(x => `<a class="az-chip" href="/return-atlas/etf/${slug(x.symbol)}.html">${esc(x.symbol)}</a>`).join('');
 
   /* --- FAQ + schema --- */
   const faqs = [
@@ -532,9 +532,9 @@ function buildEtfPage(e, all) {
 <meta name="twitter:title" content="${esc(title)}">
 <meta name="twitter:description" content="${esc(desc)}">
 <meta name="twitter:image" content="etf.png">
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/return-atlas/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/return-atlas/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/return-atlas/favicon-16x16.png">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-REPLACE_ME"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-REPLACE_ME');</script>
 <script type="application/ld+json">${JSON.stringify(breadcrumbSchema)}</script>
@@ -545,7 +545,7 @@ function buildEtfPage(e, all) {
 ${headerHtml()}
 <main>
   <div class="container">
-    <nav class="crumbs"><a href="/">Home</a> › <a href="/etf/">ETFs</a> › <span>${esc(e.symbol)}</span></nav>
+    <nav class="crumbs"><a href="/return-atlas/">Home</a> › <a href="/return-atlas/etf/">ETFs</a> › <span>${esc(e.symbol)}</span></nav>
 
     <section class="scorecard-hero">
       <div class="grade-orb tone-${g.tone}">
@@ -677,9 +677,9 @@ ${footerHtml()}
 
 function buildIndexPage(all) {
   const url = `${SITE}/etf/`;
-  const rows = all.map((x, i) => `<tr onclick="location.href='/etf/${slug(x.symbol)}.html'">
+  const rows = all.map((x, i) => `<tr onclick="location.href='/return-atlas/etf/${slug(x.symbol)}.html'">
     <td class="c" style="color:var(--text-muted)">${i + 1}</td>
-    <td><a href="/etf/${slug(x.symbol)}.html">${esc(x.symbol)}</a></td>
+    <td><a href="/return-atlas/etf/${slug(x.symbol)}.html">${esc(x.symbol)}</a></td>
     <td class="peer-name">${esc(x.name)}</td>
     <td class="c">${esc(x.yieldRaw)}</td>
     <td class="c ${x.totalNum >= 0 ? 'pos' : 'neg'}">${esc(x.totalRaw)}</td>
@@ -703,7 +703,7 @@ function buildIndexPage(all) {
 <meta property="og:description" content="${esc(desc)}">
 <meta property="og:image" content="etf.png">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/return-atlas/favicon-32x32.png">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-REPLACE_ME"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-REPLACE_ME');</script>
 <style>${STYLES}</style>
@@ -712,7 +712,7 @@ function buildIndexPage(all) {
 ${headerHtml()}
 <main>
   <div class="container">
-    <nav class="crumbs"><a href="/">Home</a> › <span>ETFs</span></nav>
+    <nav class="crumbs"><a href="/return-atlas/">Home</a> › <span>ETFs</span></nav>
     <section class="section" style="margin-top:24px">
       <h1 class="ticker-line" style="font-size:clamp(30px,5vw,46px)">All ETF Scorecards</h1>
       <p class="sec-sub" style="margin-top:12px">Every fund we track, graded on total return rather than headline yield. Click any row for the full scorecard, income calculator, and head-to-head comparisons.</p>
@@ -747,7 +747,7 @@ ${urls.map(u => `  <url><loc>${u}</loc><lastmod>${today}</lastmod><changefreq>da
 
 async function main() {
   console.log('Fetching CSV…');
-  const res = await fetch(CSV_URL + '?t=' + Date.now());
+  const res = await fetch(CSV_URL + '&t=' + Date.now());
   if (!res.ok) throw new Error('CSV fetch failed: ' + res.status);
   const txt = await res.text();
 
