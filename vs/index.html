@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-REPLACE_ME"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-REPLACE_ME');
+</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Browse 302 ETF vs ETF comparisons — SCHD vs VYM, JEPI vs JEPQ, and more — ranked by average annual total return since inception.">
+    <title>ETF Comparisons: 302 Head-to-Head Matchups (2026) | ReturnAtlas</title>
+    <link rel="canonical" href="https://returnatlas.com/vs/">
+    <meta property="og:title" content="ETF Comparisons: 302 Head-to-Head Matchups (2026) | ReturnAtlas">
+    <meta property="og:description" content="Browse 302 ETF vs ETF comparisons — SCHD vs VYM, JEPI vs JEPQ, and more — ranked by average annual total return since inception.">
+    <meta property="og:image" content="etf.png">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://returnatlas.com/vs/">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="ETF Comparisons: 302 Head-to-Head Matchups (2026) | ReturnAtlas">
+    <meta name="twitter:description" content="Browse 302 ETF vs ETF comparisons — SCHD vs VYM, JEPI vs JEPQ, and more — ranked by average annual total return since inception.">
+    <meta name="twitter:image" content="etf.png">
+    <meta name="twitter:site" content="@YieldAtlas">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700;900&display=swap" rel="stylesheet">
+    <style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --dark-bg:#0A1F1E; --surface-dark:#0F2A28; --surface-light:#152D2A;
+  --green-primary:#10B981; --green-light:#34D399; --green-dark:#059669;
+  --white:#FFFFFF; --text-primary:#FFFFFF; --text-secondary:#E5E7EB; --text-muted:#9CA3AF;
+  --border-color:rgba(16,185,129,0.2); --border-light:rgba(16,185,129,0.15);
+  --danger:#EF4444; --accent-gold:#F59E0B;
+}
+html, body { margin:0; padding:0; overflow-x:hidden; }
+body {
+  font-family:'Sora',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  background:linear-gradient(135deg,var(--dark-bg) 0%,var(--surface-dark) 50%,var(--dark-bg) 100%);
+  background-attachment:fixed; color:var(--text-primary);
+  display:flex; flex-direction:column; min-height:100vh; line-height:1.6; position:relative;
+}
+body::before { content:''; position:fixed; inset:0;
+  background:radial-gradient(circle at 20% 50%,rgba(16,185,129,0.08) 0%,transparent 50%),radial-gradient(circle at 80% 80%,rgba(16,185,129,0.05) 0%,transparent 50%);
+  pointer-events:none; z-index:0; }
+.container { width:100%; max-width:1100px; margin:0 auto; padding:0 32px; position:relative; z-index:1; }
+header { position:sticky; top:0; z-index:1000; background:rgba(10,31,30,0.9); backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border-color); padding:16px 0; box-shadow:0 8px 32px rgba(0,0,0,0.4); }
+.header-content { display:flex; justify-content:space-between; align-items:center; }
+.logo { font-size:20px; font-weight:800; letter-spacing:-0.5px;
+  background:linear-gradient(135deg,var(--green-light) 0%,var(--green-primary) 100%);
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; text-decoration:none; }
+.premium-btn { display:inline-block; padding:10px 20px; background:linear-gradient(135deg,#F59E0B,#FBBF24);
+  color:var(--dark-bg); font-weight:800; font-size:14px; text-decoration:none; border-radius:8px;
+  box-shadow:0 0 20px rgba(245,158,11,0.4); white-space:nowrap; }
+.hero { padding:40px 0 8px; text-align:center; max-width:900px; margin:0 auto; }
+.hero h1 { font-size:clamp(30px,5vw,44px); font-weight:800; letter-spacing:-1px; margin-bottom:12px; line-height:1.15;
+  background:linear-gradient(135deg,var(--green-light) 0%,var(--white) 100%);
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+.hero-subtitle { font-size:15px; color:var(--text-secondary); margin-bottom:12px; max-width:700px; margin-left:auto; margin-right:auto; }
+.hero-subtitle strong { color:var(--green-light); }
+.hero-subtitle em { color:var(--accent-gold); font-style:italic; font-size:13px; margin-top:8px; display:block; }
+.back-link { display:inline-block; margin-bottom:18px; color:var(--text-muted); font-size:13px; text-decoration:none; }
+.back-link:hover { color:var(--green-light); }
+.updated-tag { font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--text-muted); letter-spacing:1px; text-transform:uppercase; }
+.pro-bar{width:90%;max-width:1000px;margin:24px auto 32px;padding:18px 24px;display:flex;align-items:center;justify-content:space-between;gap:20px;background:linear-gradient(135deg,rgba(245,158,11,.12),rgba(16,185,129,.05));border:1.5px solid rgba(245,158,11,.3);border-radius:14px;text-decoration:none;color:var(--text-primary);transition:all .3s}
+.pro-bar:hover{border-color:var(--accent-gold);box-shadow:0 8px 32px rgba(245,158,11,.18);transform:translateY(-2px)}
+.pro-bar-left{display:flex;align-items:center;gap:16px;min-width:0}
+.pro-badge{flex-shrink:0;background:var(--accent-gold);color:var(--dark-bg);font-size:11px;font-weight:900;letter-spacing:1.5px;padding:5px 12px;border-radius:20px}
+.pro-bar-copy strong{display:block;font-size:16px;font-weight:800;color:var(--accent-gold);line-height:1.3;margin-bottom:3px}
+.pro-bar-copy span{display:block;font-size:13.5px;color:var(--text-secondary);line-height:1.45}
+.pro-bar-cta{flex-shrink:0;padding:11px 22px;background:linear-gradient(135deg,#F59E0B,#FBBF24);color:var(--dark-bg);font-weight:800;font-size:14px;border-radius:10px;white-space:nowrap;box-shadow:0 0 20px rgba(245,158,11,.35);transition:all .3s}
+.pro-bar:hover .pro-bar-cta{box-shadow:0 0 32px rgba(245,158,11,.55)}
+.pro-card-promo{width:90%;max-width:1000px;margin:24px auto 32px;padding:34px 28px;display:block;text-align:center;background:linear-gradient(135deg,rgba(245,158,11,.1),rgba(16,185,129,.05));border:1.5px solid rgba(245,158,11,.3);border-radius:14px;text-decoration:none;color:var(--text-primary);transition:all .3s}
+.pro-card-promo:hover{border-color:var(--accent-gold);box-shadow:0 8px 32px rgba(245,158,11,.18);transform:translateY(-3px)}
+.pro-card-promo h3{font-size:24px;font-weight:800;margin:14px 0 10px;line-height:1.25;color:#FBBF24}
+.pro-card-promo p{font-size:14px;color:var(--text-secondary);max-width:620px;margin:0 auto 20px;line-height:1.6}
+.pro-chips{display:flex;flex-wrap:wrap;gap:9px;justify-content:center;margin-bottom:24px}
+.pro-chips span{padding:8px 15px;background:var(--surface-dark);border:1px solid rgba(245,158,11,.25);border-radius:999px;color:#FBBF24;font-family:'JetBrains Mono',monospace;font-size:12.5px;font-weight:700}
+.pro-card-cta{display:inline-block;padding:13px 30px;background:linear-gradient(135deg,#F59E0B,#FBBF24);color:var(--dark-bg);font-weight:800;font-size:15px;border-radius:10px;box-shadow:0 0 24px rgba(245,158,11,.4);transition:all .3s}
+.pro-card-promo:hover .pro-card-cta{box-shadow:0 0 38px rgba(245,158,11,.6)}
+@media (max-width:760px){.pro-bar,.pro-card-promo{width:100%;max-width:none;margin:16px auto 24px}.pro-bar{flex-direction:column;align-items:stretch;text-align:center;gap:14px;padding:18px}.pro-bar-left{flex-direction:column;gap:10px}.pro-bar-cta{text-align:center}.pro-card-promo{padding:26px 18px}.pro-card-promo h3{font-size:19px}.pro-chips span{font-size:11.5px;padding:7px 12px}}
+.section { margin:12px 0 40px; }
+.section h2 { font-size:22px; font-weight:700; margin-bottom:20px; color:var(--white); }
+.chart-card { background:linear-gradient(135deg,rgba(16,185,129,0.06),rgba(16,185,129,0.02));
+  border:1px solid var(--border-color); border-radius:14px; padding:30px 26px 22px; margin:20px 0;
+  box-shadow:0 8px 32px rgba(0,0,0,0.2); }
+.kicker { font-size:12px; letter-spacing:1.5px; text-transform:uppercase; color:var(--green-light); font-weight:700; margin-bottom:18px; text-align:center; }
+.compare-wrap { position:relative; }
+.compare-versus { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+.compare-side { background:var(--surface-dark); border:1.5px solid var(--border-light); border-radius:12px; padding:24px 18px; text-align:center; }
+.compare-side.leader { border-color:var(--green-primary); box-shadow:0 0 0 1px var(--green-primary),0 8px 24px rgba(16,185,129,.15); }
+.leader-tag { font-size:11px; text-transform:uppercase; letter-spacing:1px; color:var(--green-light); font-weight:700; margin-bottom:10px; }
+.compare-badge { width:42px; height:42px; border-radius:10px; margin:0 auto 12px; display:flex; align-items:center; justify-content:center;
+  font-family:'JetBrains Mono',monospace; font-weight:900; font-size:1rem; background:var(--surface-light);
+  border:1px solid var(--border-color); color:var(--green-light); }
+.compare-ticker { font-weight:800; font-size:1.1rem; font-family:'JetBrains Mono',monospace; }
+.compare-name { color:var(--text-muted); font-size:0.75rem; margin:3px 0 16px; }
+.compare-metric { font-family:'JetBrains Mono',monospace; font-size:2.3rem; font-weight:900; line-height:1; }
+.compare-metric.pos { color:var(--green-light); }
+.compare-metric.neg { color:var(--danger); }
+.compare-metric-label { font-size:11px; text-transform:uppercase; letter-spacing:1px; color:var(--text-muted); margin:6px 0 16px; }
+.compare-substats { display:flex; justify-content:center; gap:16px; font-size:0.75rem; color:var(--text-secondary); border-top:1px solid var(--border-light); padding-top:14px; }
+.compare-substats b { color:var(--white); display:block; font-size:0.85rem; font-family:'JetBrains Mono',monospace; }
+.vs-divider { position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); z-index:2;
+  background:var(--dark-bg); border:1.5px solid var(--accent-gold); color:var(--accent-gold);
+  font-weight:800; font-size:12px; padding:5px 11px; border-radius:999px; text-transform:uppercase;
+  box-shadow:0 0 16px rgba(245,158,11,.35); }
+.chart-watermark { display:flex; align-items:center; justify-content:space-between; margin-top:24px; padding-top:16px; border-top:1px solid var(--border-light); }
+.wm-brand { font-weight:800; font-size:0.85rem; background:linear-gradient(135deg,var(--green-light),var(--green-primary));
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+.wm-note { font-family:'JetBrains Mono',monospace; font-size:0.68rem; color:var(--text-muted); }
+.verdict { max-width:800px; margin:0 auto; }
+.verdict p { color:var(--text-secondary); font-size:14.5px; margin-bottom:14px; }
+.verdict strong { color:var(--green-light); }
+.cta-row { display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin:26px 0 8px; }
+.btn { display:inline-flex; align-items:center; gap:8px; padding:12px 24px; border-radius:10px;
+  font-weight:800; font-size:0.88rem; text-decoration:none; }
+.btn-primary { background:linear-gradient(135deg,var(--green-primary),var(--green-light)); color:var(--dark-bg);
+  box-shadow:0 0 24px rgba(16,185,129,.4); }
+.btn-outline { background:transparent; border:1.5px solid var(--green-primary); color:var(--green-light); }
+.table-container { background:linear-gradient(135deg,rgba(16,185,129,0.06),rgba(16,185,129,0.02));
+  border:1px solid var(--border-color); border-radius:14px; overflow-x:auto; box-shadow:0 8px 32px rgba(0,0,0,0.2); }
+.table-header-label { font-size:12px; letter-spacing:1.5px; text-transform:uppercase; color:var(--green-light); font-weight:700;
+  padding:20px 24px 16px; border-bottom:1px solid var(--border-color); display:block; }
+table.detail-table { width:100%; border-collapse:collapse; min-width:640px; }
+.detail-table th { padding:14px 12px; text-align:left; font-weight:700; font-size:11.5px; letter-spacing:0.6px;
+  color:var(--green-light); text-transform:uppercase; border-right:1px solid var(--border-light);
+  background:rgba(16,185,129,.04); white-space:nowrap; }
+.detail-table th:last-child { border-right:none; }
+.detail-table td { padding:12px; color:var(--text-primary); border-bottom:1px solid var(--border-light); font-size:0.86rem; }
+.detail-table tr:last-child td { border-bottom:none; }
+.mono { font-family:'JetBrains Mono',monospace; }
+.faq-item { border:1px solid var(--border-color); border-radius:12px; padding:18px 20px; margin-bottom:12px;
+  background:linear-gradient(135deg,rgba(16,185,129,0.06),rgba(16,185,129,0.02)); max-width:800px; margin-left:auto; margin-right:auto; }
+.faq-item h3 { font-size:15px; font-weight:700; color:var(--green-light); margin-bottom:6px; }
+.faq-item p { font-size:13.5px; color:var(--text-secondary); margin:0; }
+.related-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:12px; }
+.related-link { display:block; padding:14px 16px; background:linear-gradient(135deg,rgba(16,185,129,0.08),rgba(16,185,129,0.04));
+  border:1px solid var(--border-color); border-radius:10px; text-decoration:none; color:var(--text-primary);
+  font-family:'JetBrains Mono',monospace; font-weight:700; font-size:0.85rem; text-align:center; }
+.related-link:hover { border-color:var(--green-primary); color:var(--green-light); }
+footer { background:linear-gradient(135deg,rgba(16,185,129,0.08),rgba(16,185,129,0.04));
+  border-top:1px solid var(--border-color); padding:44px 0 26px; margin-top:auto; }
+.footer-content { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:24px;
+  max-width:1100px; margin:0 auto; padding:0 32px; }
+.footer-links { display:flex; gap:22px; flex-wrap:wrap; }
+.footer-links a { color:var(--text-secondary); text-decoration:none; font-size:13px; }
+.footer-links a:hover { color:var(--green-light); }
+.footer-disclaimer { font-size:12.5px; color:var(--text-muted); max-width:640px; line-height:1.5; }
+.footer-copyright { color:var(--text-muted); font-size:12.5px; white-space:nowrap; }
+@media (max-width:768px) {
+  .container { padding:0 16px; }
+  .header-content { flex-direction:column; gap:8px; }
+  .compare-versus { grid-template-columns:1fr; }
+  .footer-content { flex-direction:column; text-align:center; }
+}
+</style>
+</head>
+<body>
+<header><div class="container"><div class="header-content">
+  <a href="/" class="logo">📈 ReturnAtlas</a>
+  <a href="https://YieldAtlasPRO.com" target="_blank" class="premium-btn">🌟 Premium</a>
+</div></div></header>
+<main>
+  <section class="hero"><div class="container">
+    <a href="/compare.html" class="back-link">← Interactive Comparison Tool</a>
+    <h1>ETF vs ETF: Every Comparison</h1>
+    <p class="hero-subtitle">
+      302 head-to-head ETF matchups, each compared by <strong>average annual total return since inception</strong>.
+      Pick a matchup or build your own in the <a href="/compare.html" style="color:var(--green-light);">interactive tool</a>.
+    </p>
+    <p class="updated-tag">Updated Sep 15, 2026</p>
+  </div></section>
+
+  <div class="container"><a href="https://YieldAtlasPRO.com" target="_blank" rel="noopener" class="pro-bar">
+  <div class="pro-bar-left">
+    <span class="pro-badge">PRO</span>
+    <div class="pro-bar-copy">
+      <strong>See the numbers this page doesn't show</strong>
+      <span>Tax treatment, AUM, price decay, and advanced filtering &mdash; updated daily.</span>
+    </div>
+  </div>
+  <span class="pro-bar-cta">Go PRO &rarr;</span>
+</a></div>
+
+  <section class="section"><div class="container">
+    <h2>DGRO Comparisons</h2>
+    <div class="related-grid">
+      <a class="related-link" href="/vs/dgro-vs-voo.html">DGRO vs VOO</a>
+      <a class="related-link" href="/vs/dgro-vs-vig.html">DGRO vs VIG</a>
+      <a class="related-link" href="/vs/dgro-vs-schd.html">DGRO vs SCHD</a>
+      <a class="related-link" href="/vs/dgro-vs-vym.html">DGRO vs VYM</a>
+      <a class="related-link" href="/vs/dgro-vs-schg.html">DGRO vs SCHG</a>
+      <a class="related-link" href="/vs/dgro-vs-jepi.html">DGRO vs JEPI</a>
+      <a class="related-link" href="/vs/dgro-vs-jepq.html">DGRO vs JEPQ</a>
+      <a class="related-link" href="/vs/dgro-vs-dvy.html">DGRO vs DVY</a>
+      <a class="related-link" href="/vs/dgro-vs-sdy.html">DGRO vs SDY</a>
+      <a class="related-link" href="/vs/dgro-vs-vymi.html">DGRO vs VYMI</a>
+      <a class="related-link" href="/vs/dgro-vs-dgrw.html">DGRO vs DGRW</a>
+      <a class="related-link" href="/vs/dgro-vs-schp.html">DGRO vs SCHP</a>
+      <a class="related-link" href="/vs/dgro-vs-hdv.html">DGRO vs HDV</a>
+      <a class="related-link" href="/vs/dgro-vs-qqqi.html">DGRO vs QQQI</a>
+      <a class="related-link" href="/vs/dgro-vs-sphy.html">DGRO vs SPHY</a>
+      <a class="related-link" href="/vs/dgro-vs-spyi.html">DGRO vs SPYI</a>
+      <a class="related-link" href="/vs/dgro-vs-nobl.html">DGRO vs NOBL</a>
+      <a class="related-link" href="/vs/dgro-vs-sgov.html">DGRO vs SGOV</a>
+      <a class="related-link" href="/vs/dgro-vs-jpie.html">DGRO vs JPIE</a>
+      <a class="related-link" href="/vs/dgro-vs-fdvv.html">DGRO vs FDVV</a>
+      <a class="related-link" href="/vs/dgro-vs-idv.html">DGRO vs IDV</a>
+      <a class="related-link" href="/vs/dgro-vs-qyld.html">DGRO vs QYLD</a>
+      <a class="related-link" href="/vs/dgro-vs-divo.html">DGRO vs DIVO</a>
+      <a class="related-link" href="/vs/dgro-vs-pdi.html">DGRO vs PDI</a>
+    </div>
+  </div></section>
+<section class="section"><div class="container">
+    <h2>DGRW Comparisons</h2>
+    <div class="related-grid">
+      <a class="related-link" href="/vs/dgrw-vs-voo.html">DGRW vs VOO</a>
+      <a class="related-link" href="/vs/dgrw-vs-vig.html">DGRW vs VIG</a>
+      <a class="related-link" href="/vs/dgrw-vs-schd.html">DGRW vs SCHD</a>
+      <a class="related-link" href="/vs/dgrw-vs-vym.html">DGRW vs VYM</a>
+      <a class="related-link" href="/vs/dgrw-vs-schg.html">DGRW vs SCHG</a>
+      <a class="related-link" href="/vs/dgrw-vs-jepi.html">DGRW vs JEPI</a>
+      <a class="related-link" href="/vs/dgrw-vs-jepq.html">DGRW vs JEPQ</a>
+      <a class="related-link" href="/vs/dgrw-vs-dvy.html">DGRW vs DVY</a>
+      <a class="related-link" href="/vs/dgrw-vs-sdy.html">DGRW vs SDY</a>
+      <a class="related-link" href="/vs/dgrw-vs-vymi.html">DGRW vs VYMI</a>
+      <a class="related-link" href="/vs/dgrw-vs-schp.html">DGRW vs SCHP</a>
+      <a class="related-link" href="/vs/dgrw-vs-hdv.html">DGRW vs HDV</a>
+      <a class="related-link" href="/vs/dgrw-vs-qqqi.html">DGRW vs QQQI</a>
+      <a class="related-link" href="/vs/dgrw-vs-sphy.html">DGRW vs SPHY</a>
+      <a class="related-link" href="/vs/dgrw-vs-spyi.html">DGRW vs SPYI</a>
+      <a class="related-link" href="/vs/dgrw-vs-nobl.html">DGRW vs NOBL</a>
+      <a class="related-link" href="/vs/dgrw-vs-sgov.html">DGRW vs SGOV</a>
+      <a class="related-link" href="/vs/dgrw-vs-jpie.html">DGRW vs JPIE</a>
+      <a class="related-link" href="/vs/dgrw-vs-fdvv.html">DGRW vs FDVV</a>
+      <a class="related-link" href="/vs/dgrw-vs-idv.html">DGRW vs IDV</a>
+      <a class="related-link" href="/vs/dgrw-vs-qyld.html">DGRW vs QYLD</a>
+      <a class="related-link" href="/vs/dgrw-vs-divo.html">DGRW vs DIVO</a>
+      <a class="related-link" href="/vs/dgrw-vs-pdi.html">DGRW vs PDI</a>
+    </div>
+  </div></section>
+<section class="section"><div class="container">
+    <h2>DIVO Comparisons</h2>
+    <div class="related-grid">
+      <a class="related-link" href="/vs/divo-vs-voo.html">DIVO vs VOO</a>
+      <a class="related-link" href="/vs/divo-vs-vig.html">DIVO vs VIG</a>
+      <a class="related-link" href="/vs/divo-vs-schd.html">DIVO vs SCHD</a>
+      <a class="related-link" href="/vs/divo-vs-vym.html">DIVO vs VYM</a>
+      <a class="related-link" href="/vs/divo-vs-schg.html">DIVO vs SCHG</a>
+      <a class="related-link" href="/vs/divo-vs-jepi.html">DIVO vs JEPI</a>
+      <a class="related-link" href="/vs/divo-vs-jepq.html">DIVO vs JEPQ</a>
+      <a class="related-link" href="/vs/divo-vs-dvy.html">DIVO vs DVY</a>
+      <a class="related-link" href="/vs/divo-vs-sdy.html">DIVO vs SDY</a>
+      <a class="related-link" href="/vs/divo-vs-vymi.html">DIVO vs VYMI</a>
+      <a class="related-link" href="/vs/divo-vs-schp.html">DIVO vs SCHP</a>
+      <a class="related-link" href="/vs/divo-vs-hdv.html">DIVO vs HDV</a>
+      <a class="related-link" href="/vs/divo-vs-qqqi.html">DIVO vs QQQI</a>
+      <a class="related-link" href="/vs/divo-vs-sphy.html">DIVO vs SPHY</a>
+      <a class="related-link" href="/vs/divo-vs-spyi.html">DIVO vs SPYI</a>
+      <a class="related-link" href="/vs/divo-vs-nobl.html">DIVO vs NOBL</a>
+      <a class="related-link" href="/vs/divo-vs-sgov.html">DIVO vs SGOV</a>
+      <a class="related-link" href="/vs/divo-vs-jpie.html">DIVO vs JPIE</a>
+      <a class="related-link" href="/vs/divo-vs-fdvv.html">DIVO vs FDVV</a>
+      <a class="related-link" href="/vs/divo-vs-idv.html">DIVO vs IDV</a>
+      <a class="related-link" href="/vs/divo-vs-qyld.html">DIVO vs QYLD</a>
+      <a class="related-link" href="/vs/divo-vs-pdi.html">DIVO vs PDI</a>
+    </div>
+  </div></section>
+<section class="section"><div class="container">
+    <h2>DVY Comparisons</h2>
+    <div class="related-grid">
+      <a class="related-link" href="/vs/dvy-vs-voo.html">DVY vs VOO</a>
+      <a class="related-link" href="/vs/dvy-vs-vig.html">DVY vs VIG</a>
+      <a class="related-link" href="/vs/dvy-vs-schd.html">DVY vs SCHD</a>
+      <a class="related-link" href="/vs/dvy-vs-vym.html">DVY vs VYM</a>
+      <a class="related-link" href="/vs/dvy-vs-schg.html">DVY vs SCHG</a>
+      <a class="related-link" href="/vs/dvy-vs-jepi.html">DVY vs JEPI</a>
+      <a class="related-link" href="/vs/dvy-vs-jepq.html">DVY vs JEPQ</a>
+      <a class="related-link" href="/vs/dvy-vs-sdy.html">DVY vs SDY</a>
+      <a class="related-link" href="/vs/dvy-vs-vymi.html">DVY vs VYMI</a>
+      <a class="related-link" href="/vs/dvy-vs-schp.html">DVY vs SCHP</a>
+      <a class="related-link" href="/vs/dvy-vs-hdv.html">DVY vs HDV</a>
+      <a class="related-link" href="/vs/dvy-vs-qqqi.html">DVY vs QQQI</a>
+      <a class="related-link" href="/vs/dvy-vs-sphy.html">DVY vs SPHY</a>
+      <a class="related-link" href="/vs/dvy-vs-spyi.html">DVY vs SPYI</a>
+      <a class="related-link" href="/vs/dvy-vs-nobl.html">DVY vs NOBL</a>
+      <a class="related-link" href="/vs/dvy-vs-sgov.html">DVY vs SGOV</a>
+      <a class="related-link" href="/vs/dvy-vs-jpie.html">DVY vs JPIE</a>
+      <a class="related-link" href="/vs/dvy-vs-fdvv.html">DVY vs FDVV</a>
+      <a class="related-link" href="/vs/dvy-vs-idv.html">DVY vs IDV</a>
+      <a class="related-link" href="/vs/dvy-vs-qyld.html">DVY vs QYLD</a>
+      <a class="related-link" href="/vs/dvy-vs-pdi.html">DVY vs PDI</a>
+    </div>
+  </div></section>
+<section class="section"><div class="container">
+    <h2>FDVV Comparisons</h2>
+    <div class="related-grid">
+      <a class="related-link" href="/vs/fdvv-vs-voo.html">FDVV vs VOO</a>
+      <a class="related-link" href="/vs/fdvv-vs-vig.html">FDVV vs VIG</a>
+      <a class="related-link" href="/vs/fdvv-vs-schd.html">FDVV vs SCHD</a>
+      <a class="related-link" href="/vs/fdvv-vs-vym.html">FDVV vs VYM</a>
+      <a class="related-link" href="/vs/fdvv-vs-schg.html">FDVV vs SCHG</a>
+      <a class="related-link" href="/vs/fdvv-vs-jepi.html">FDVV vs JEPI</a>
+      <a class="related-link" href="/vs/fdvv-vs-jepq.html">FDVV vs JEPQ</a>
+      <a class="related-link" href="/vs/fdvv-vs-sdy.html">FDVV vs SDY</a>
+      <a class="related-link" href="/vs/fdvv-vs-vymi.html">FDVV vs VYMI</a>
+      <a class="related-link" href="/vs/fdvv-vs-schp.html">FDVV vs SCHP</a>
+      <a class="related-link" href="/vs/fdvv-vs-hdv.html">FDVV vs HDV</a>
+      <a class="related-link" href="/vs/fdvv-vs-qqqi.html">FDVV vs QQQI</a>
+      <a class="related-link" href="/vs/fdvv-vs-sphy.html">FDVV vs SPHY</a>
+      <a class="related-link" href="/vs/fdvv-vs-spyi.html">FDVV vs SPYI</a>
+      <a class="related-link" href="/vs/fdvv-vs-nobl.html">FDVV vs NOBL</a>
+      <a class="related-link" href="/vs/fdvv-vs-sgov.html">FDVV vs SGOV</a>
+      <a class="related-link" href="/vs/fdvv-vs-jpie.html">FDVV vs JPIE</a>
+      <a class="related-link" href="/vs/fdvv-vs-idv.html">FDVV vs IDV</a>
+      <a class="related-link" href="/vs/fdvv-vs-qyld.html">FDVV vs QYLD</a>
+      <a class="related-link" href="/vs/fdvv-vs-pdi.html">FDVV vs PDI</a>
+    </div>
+  </div></section>
+<section class="section"><div class="container">
+    <h2>HDV Comparisons</h2>
+    <div class="related-grid">
+      <a class="related-link" href="/vs/hdv-vs-voo.html">HDV vs VOO</a>
+      <a class="related-link" href="/vs/hdv-vs-vig.html">HDV vs VIG</a>
+      <a class="related-link" href="/vs/hdv-vs-schd.html">HDV vs SCHD</a>
+      <a class="related-link" href="/vs/hdv-vs-vym.html">HDV vs VYM</a>
+      <a class="related-link" href="/vs/hdv-vs-schg.html">HDV vs SCHG</a>
+      <a class="related-link" href="/vs/hdv-vs-jepi.html">HDV vs JEPI</a>
+      <a class="related-link" href="/vs/hdv-vs-jepq.html">HDV vs JEPQ</a>
+      <a class="related-link" href="/vs/hdv-vs-sdy.html">HDV vs SDY</a>
+      <a class="related-link" href="/vs/hdv-vs-vymi.html">HDV vs VYMI</a>
+      <a class="related-link" href="/vs/hdv-vs-schp.html">HDV vs SCHP</a>
+      <a class="related-link" href="/vs/hdv-vs-qqqi.html">HDV vs QQQI</a>
+      <a class="related-link" href="/vs/hdv-vs-sphy.html">HDV vs SPHY</a>
+      <a class="related-link" href="/vs/hdv-vs-spyi.html">HDV vs SPYI</a>
+      <a class="related-link" href="/vs/hdv-vs-nobl.html">HDV vs NOBL</a>
+      <a class="related-link" href="/vs/hdv-vs-sgov.html">HDV vs SGOV</a>
+      <a class="related-link" href="/vs/hdv-vs-jpie.html">HDV vs JPIE</a>
+      <a class="related-link" href="/vs/hdv-vs-idv.html">HDV vs IDV</a>
+      <a class="related-link" href="/vs/hdv-vs-qyld.html">HDV vs QYLD</a>
+      <a class="related-link" href="/vs/hdv-vs-pdi.html">HDV vs PDI</a>
+    </div>
+  </div></section>
+<section class="section"><div class="container">
+    <h2>IDV Comparisons</h2>
+    <div class="related-grid">
+      <a class="related-link" href="/vs/idv-vs-voo.html">IDV vs VOO</a>
+      <a class="related-link" href="/vs/idv-vs-vig.html">IDV vs VIG</a>
+      <a class="related-link" href="/vs/idv-vs-schd.html">IDV vs SCHD</a>
+      <a class="related-link" href="/vs/idv-vs-vym.html">IDV vs VYM</a>
+      <a class="related-link" href="/vs/idv-vs-schg.html">IDV vs SCHG</a>
+      <a class="related-link" href="/vs/idv-vs-jepi.html">IDV vs JEPI</a>
+      <a class="related-link" href="/vs/idv-vs-jepq.html">IDV vs JEPQ</a>
+      <a class="related-link" href="/vs/idv-vs-sdy.html">IDV vs SDY</a>
+      <a class="related-link" href="/vs/idv-vs-vymi.html">IDV vs VYMI</a>
+      <a class="related-link" href="/vs/idv-vs-schp.html">IDV vs SCHP</a>
+      <a class="related-link" href="/vs/idv-vs-qqqi.html">IDV vs QQQI</a>
+      <a class="related-link" href="/vs/idv-vs-sphy.html">IDV vs SPHY</a>
+      <a class="related-link" href="/vs/idv-vs-spyi.html">IDV vs SPYI</a>
+      <a class="related-link" href="/vs/idv-vs-nobl.html">IDV vs NOBL</a>
+      <a class="related-link" href="/vs/idv-vs-sgov.html">IDV vs SGOV</a>
+      <a class="related-link" href="/vs/idv-vs-jpie.html">IDV vs JPIE</a>
+      <a class="related-link" href="/vs/idv-vs-qyld.html">IDV vs QYLD</a>
+      <a class="related-link" href="/vs/idv-vs-pdi.html">IDV vs PDI</a>
+    </div>
+  </div></section>
+<section class="section"><div class="container">
+    <h2>JEPI Comparisons</h2>
+    <div class="related-grid">
+      <a class="related-link" href="/vs/jepi-vs-voo.html">JEPI vs VOO</a>
+      <a class="related-link" href="/vs/jepi-vs-vig.html">JEPI vs VIG</a>
+      <a class="related-link" href="/vs/jepi-vs-schd.html">JEPI vs SCHD</a>
+      <a class="related-link" href="/vs/jepi-vs-vym.html">JEPI vs VYM</a>
+      <a class="related-link" href="/vs/jepi-vs-schg.html">JEPI vs SCHG</a>
+      <a class="related-link" href="/vs/jepi-vs-jepq.html">JEPI vs JEPQ</a>
+      <a class="related-link" href="/vs/jepi-vs-sdy.html">JEPI vs SDY</a>
+      <a class="related-link" href="/vs/jepi-vs-vymi.html">JEPI vs VYMI</a>
+      <a class="related-link" href="/vs/jepi-vs-schp.html">JEPI vs SCHP</a>
+      <a class="related-link" href="/vs/jepi-vs-qqqi.html">JEPI vs QQQI</a>
+      <a class="related-link" href="/vs/jepi-vs-sphy.html">JEPI vs SPHY</a>
+      <a class="related-link" href="/vs/jepi-vs-spyi.html">JEPI vs SPYI</a>
+      <a class="related-link" href="/vs/jepi-vs-nobl.html">JEPI vs NOBL</a>
+      <a class="related-link" href="/vs/jepi-vs-sgov.html">JEPI vs SGOV</a>
+      <a class="related-link" href="/vs/jepi-vs-jpie.html">JEPI vs JPIE</a>
+      <a class="related-link" href="/vs/jepi-vs-qyld.html">JEPI vs QYLD</a>
+      <a class="related-link" href="/vs/jepi-vs-pdi.html">JEPI vs PDI</a>
+    </div>
+  </div></section>
+<section class="section"><div class="container">
+    <h2>JEPQ Comparisons</h2>
+    <div class="related-grid">
+      <a class="related-link" href="/vs/jepq-vs-voo.html">JEPQ vs VOO</a>
+      <a class="related-link" href="/vs/jepq-vs-vig.html">JEPQ vs VIG</a>
+      <a class="related-link" href="/vs/jepq-vs-schd.html">JEPQ vs SCHD</a>
+      <a class="related-link" href="/vs/jepq-vs-vym.html">JEPQ vs VYM</a>
+      <a class="related-link" href="/vs/jepq-vs-schg.html">JEPQ vs SCHG</a>
+      <a class="related-link" href="/vs/jepq-vs-sdy.html">JEPQ vs SDY</a>
+      <a class="related-link" href="/vs/jepq-vs-vymi.html">JEPQ vs VYMI</a>
+      <a class="related-link" href="/vs/jepq-vs-schp.html">JEPQ vs SCHP</a>
+      <a class="related-link" href="/vs/jepq-vs-qqqi.html">JEPQ vs QQQI</a>
+      <a class="related-link" href="/vs/jepq-vs-sphy.html">JEPQ vs SPHY</a>
+      <a class="related-link" href="/vs/jepq-vs-spyi.html">JEPQ vs SPYI</a>
+      <a class="related-link" href="/vs/jepq-vs-nobl.html">JEPQ vs NOBL</a>
+      <a class="related-link" href="/vs/jepq-vs-sgov.html">JEPQ vs SGOV</a>
+      <a class="related-link" href="/vs/jepq-vs-jpie.html">JEPQ vs JPIE</a>
+      <a class="related-link" href="/vs/jepq-vs-qyld.html">JEPQ vs QYLD</a>
+      <a class="related-link" href="/vs/jepq-vs-pdi.html">JEPQ vs PDI</a>
+    </div>
+  </div></section>
+<section class="section"><div class="container">
+    <h2>JPIE Comparisons</h2>
+    <div class="related-grid">
+      <a class="related-link" href="/vs/jpie-vs-voo.html">JPIE vs VOO</a>
+      <a class="related-link" href="/vs/jpie-vs-vig.html">JPIE vs VIG</a>
+      <a class="related-link" href="/vs/jpie-vs-schd.html">JPIE vs SCHD</a>
+      <a class="related-link" href="/vs/jpie-vs-vym.html">JPIE vs VYM</a>
+      <a class="related-link" href="/vs/jpie-vs-schg.html">JPIE vs SCHG</a>
+      <a class="related-link" href="/vs/jpie-vs-sdy.html">JPIE vs SDY</a>
+      <a class="related-link" href="/vs/jpie-vs-vymi.html">JPIE vs VYMI</a>
+      <a class="related-link" href="/vs/jpie-vs-schp.html">JPIE vs SCHP</a>
+      <a class="related-link" href="/vs/jpie-vs-qqqi.html">JPIE vs QQQI</a>
+      <a class="related-link" href="/vs/jpie-vs-sphy.html">JPIE vs SPHY</a>
+      <a class="related-link" href="/vs/jpie-vs-spyi.html">JPIE vs SPYI</a>
+      <a class="related-link" href="/vs/jpie-vs-nobl.html">JPIE vs NOBL</a>
+      <a class="related-link" href="/vs/jpie-vs-sgov.html">JPIE vs SGOV</a>
+      <a class="related-link" href="/vs/jpie-vs-qyld.html">JPIE vs QYLD</a>
+      <a class="related-link" href="/vs/jpie-vs-pdi.html">JPIE vs PDI</a>
+    </div>
+  </div></section>
+<section class="section"><div class="container">
+    <h2>NOBL Comparisons</h2>
+    <div class="related-grid">
+      <a class="related-link" href="/vs/nobl-vs-voo.html">NOBL vs VOO</a>
+      <a class="related-link" href="/vs/nobl-vs-vig.html">NOBL vs VIG</a>
+      <a class="related-link" href="/vs/nobl-vs-schd.html">NOBL vs SCHD</a>
+      <a class="related-link" href="/vs/nobl-vs-vym.html">NOBL vs VYM</a>
+      <a class="related-link" href="/vs/nobl-vs-schg.html">NOBL vs SCHG</a>
+      <a class="related-link" href="/vs/nobl-vs-sdy.html">NOBL vs SDY</a>
+      <a class="related-link" href="/vs/nobl-vs-vymi.html">NOBL vs VYMI</a>
+      <a class="related-link" href="/vs/nobl-vs-schp.html">NOBL vs SCHP</a>
+      <a class="related-link" href="/vs/nobl-vs-qqqi.html">NOBL vs QQQI</a>
+      <a class="related-link" href="/vs/nobl-vs-sphy.html">NOBL vs SPHY</a>
+      <a class="related-link" href="/vs/nobl-vs-spyi.html">NOBL vs SPYI</a>
+      <a class="related-link" href="/vs/nobl-vs-sgov.html">NOBL vs SGOV</a>
+      <a class="related-link" href="/vs/nobl-vs-qyld.html">NOBL vs QYLD</a>
+      <a class="related-link" href="/vs/nobl-vs-pdi.html">NOBL vs PDI</a>
+    </div>
+  </div></section>
+<section class="section"><div class="container">
+    <h2>PDI Comparisons</h2>
+    <div class="related-grid">
+      <a class="related-link" href="/vs/pdi-vs-voo.html">PDI vs VOO</a>
+      <a class="related-link" href="/vs/pdi-vs-vig.html">PDI vs VIG</a>
+      <a class="related-link" href="/vs/pdi-vs-schd.html">PDI vs SCHD</a>
+      <a class="related-link" href="/vs/pdi-vs-vym.html">PDI vs VYM</a>
+      <a class="related-link" href="/vs/pdi-vs-schg.html">PDI vs SCHG</a>
+      <a class="related-link" href="/vs/pdi-vs-sdy.html">PDI vs SDY</a>
+      <a class="related-link" href="/vs/pdi-vs-vymi.html">PDI vs VYMI</a>
+      <a class="related-link" href="/vs/pdi-vs-schp.html">PDI vs SCHP</a>
+      <a class="related-link" href="/vs/pdi-vs-qqqi.html">PDI vs QQQI</a>
+      <a class="related-link" href="/vs/pdi-vs-sphy.html">PDI vs SPHY</a>
+      <a class="related-link" href="/vs/pdi-vs-spyi.html">PDI vs SPYI</a>
+      <a class="related-link" href="/vs/pdi-vs-sgov.html">PDI vs SGOV</a>
+      <a class="related-link" href="/vs/pdi-vs-qyld.html">PDI vs QYLD</a>
+    </div>
+  </div></section>
+<section class="section"><div class="container">
+    <h2>QQQI Comparisons</h2>
+    <div class="related-grid">
+      <a class="related-link" href="/vs/qqqi-vs-voo.html">QQQI vs VOO</a>
+      <a class="related-link" href="/vs/qqqi-vs-vig.html">QQQI vs VIG</a>
+      <a class="related-link" href="/vs/qqqi-vs-schd.html">QQQI vs SCHD</a>
+      <a class="related-link" href="/vs/qqqi-vs-vym.html">QQQI vs VYM</a>
+      <a class="related-link" href="/vs/qqqi-vs-schg.html">QQQI vs SCHG</a>
+      <a class="related-link" href="/vs/qqqi-vs-sdy.html">QQQI vs SDY</a>
+      <a class="related-link" href="/vs/qqqi-vs-vymi.html">QQQI vs VYMI</a>
+      <a class="related-link" href="/vs/qqqi-vs-schp.html">QQQI vs SCHP</a>
+      <a class="related-link" href="/vs/qqqi-vs-sphy.html">QQQI vs SPHY</a>
+      <a class="related-link" href="/vs/qqqi-vs-spyi.html">QQQI vs SPYI</a>
+      <a class="related-link" href="/vs/qqqi-vs-sgov.html">QQQI vs SGOV</a>
+      <a class="related-link" href="/vs/qqqi-vs-qyld.html">QQQI vs QYLD</a>
+    </div>
+  </div></section>
+<section class="section"><div class="container">
+    <h2>QYLD Comparisons</h2>
+    <div class="related-grid">
+      <a class="related-link" href="/vs/qyld-vs-voo.html">QYLD vs VOO</a>
+      <a class="related-link" href="/vs/qyld-vs-vig.html">QYLD vs VIG</a>
+      <a class="related-link" href="/vs/qyld-vs-schd.html">QYLD vs SCHD</a>
+      <a class="related-link" href="/vs/qyld-vs-vym.html">QYLD vs VYM</a>
+      <a class="related-link" href="/vs/qyld-vs-schg.html">QYLD vs SCHG</a>
+      <a class="related-link" href="/vs/qyld-vs-sdy.html">QYLD vs SDY</a>
+      <a class="related-link" href="/vs/qyld-vs-vymi.html">QYLD vs VYMI</a>
+      <a class="related-link" href="/vs/qyld-vs-schp.html">QYLD vs SCHP</a>
+      <a class="related-link" href="/vs/qyld-vs-sphy.html">QYLD vs SPHY</a>
+      <a class="related-link" href="/vs/qyld-vs-spyi.html">QYLD vs SPYI</a>
+      <a class="related-link" href="/vs/qyld-vs-sgov.html">QYLD vs SGOV</a>
+      <a class="related-link" href="/vs/qyld-vs-xyld.html">QYLD vs XYLD</a>
+      <a class="related-link" href="/vs/qyld-vs-ryld.html">QYLD vs RYLD</a>
+    </div>
+  </div></section>
+<section class="section"><div class="container">
+    <h2>SCHD Comparisons</h2>
+    <div class="related-grid">
+      <a class="related-link" href="/vs/schd-vs-voo.html">SCHD vs VOO</a>
+      <a class="related-link" href="/vs/schd-vs-vig.html">SCHD vs VIG</a>
+      <a class="related-link" href="/vs/schd-vs-vym.html">SCHD vs VYM</a>
+      <a class="related-link" href="/vs/schd-vs-schg.html">SCHD vs SCHG</a>
+      <a class="related-link" href="/vs/schd-vs-sdy.html">SCHD vs SDY</a>
+      <a class="related-link" href="/vs/schd-vs-vymi.html">SCHD vs VYMI</a>
+      <a class="related-link" href="/vs/schd-vs-schp.html">SCHD vs SCHP</a>
+      <a class="related-link" href="/vs/schd-vs-sphy.html">SCHD vs SPHY</a>
+      <a class="related-link" href="/vs/schd-vs-spyi.html">SCHD vs SPYI</a>
+      <a class="related-link" href="/vs/schd-vs-sgov.html">SCHD vs SGOV</a>
+    </div>
+  </div></section>
+<section class="section"><div class="container">
+    <h2>SCHG Comparisons</h2>
+    <div class="related-grid">
+      <a class="related-link" href="/vs/schg-vs-voo.html">SCHG vs VOO</a>
+      <a class="related-link" href="/vs/schg-vs-vig.html">SCHG vs VIG</a>
+      <a class="related-link" href="/vs/schg-vs-vym.html">SCHG vs VYM</a>
+      <a class="related-link" href="/vs/schg-vs-sdy.html">SCHG vs SDY</a>
+      <a class="related-link" href="/vs/schg-vs-vymi.html">SCHG vs VYMI</a>
+      <a class="related-link" href="/vs/schg-vs-schp.html">SCHG vs SCHP</a>
+      <a class="related-link" href="/vs/schg-vs-sphy.html">SCHG vs SPHY</a>
+      <a class="related-link" href="/vs/schg-vs-spyi.html">SCHG vs SPYI</a>
+      <a class="related-link" href="/vs/schg-vs-sgov.html">SCHG vs SGOV</a>
+    </div>
+  </div></section>
+<section class="section"><div class="container">
+    <h2>SCHP Comparisons</h2>
+    <div class="related-grid">
+      <a class="related-link" href="/vs/schp-vs-voo.html">SCHP vs VOO</a>
+      <a class="related-link" href="/vs/schp-vs-vig.html">SCHP vs VIG</a>
+      <a class="related-link" href="/vs/schp-vs-vym.html">SCHP vs VYM</a>
+      <a class="related-link" href="/vs/schp-vs-sdy.html">SCHP vs SDY</a>
+      <a class="related-link" href="/vs/schp-vs-vymi.html">SCHP vs VYMI</a>
+      <a class="related-link" href="/vs/schp-vs-sphy.html">SCHP vs SPHY</a>
+      <a class="related-link" href="/vs/schp-vs-spyi.html">SCHP vs SPYI</a>
+      <a class="related-link" href="/vs/schp-vs-sgov.html">SCHP vs SGOV</a>
+    </div>
+  </div></section>
+<section class="section"><div class="container">
+    <h2>SDY Comparisons</h2>
+    <div class="related-grid">
+      <a class="related-link" href="/vs/sdy-vs-voo.html">SDY vs VOO</a>
+      <a class="related-link" href="/vs/sdy-vs-vig.html">SDY vs VIG</a>
+      <a class="related-link" href="/vs/sdy-vs-vym.html">SDY vs VYM</a>
+      <a class="related-link" href="/vs/sdy-vs-vymi.html">SDY vs VYMI</a>
+      <a class="related-link" href="/vs/sdy-vs-sphy.html">SDY vs SPHY</a>
+      <a class="related-link" href="/vs/sdy-vs-spyi.html">SDY vs SPYI</a>
+      <a class="related-link" href="/vs/sdy-vs-sgov.html">SDY vs SGOV</a>
+    </div>
+  </div></section>
+<section class="section"><div class="container">
+    <h2>SGOV Comparisons</h2>
+    <div class="related-grid">
+      <a class="related-link" href="/vs/sgov-vs-voo.html">SGOV vs VOO</a>
+      <a class="related-link" href="/vs/sgov-vs-vig.html">SGOV vs VIG</a>
+      <a class="related-link" href="/vs/sgov-vs-vym.html">SGOV vs VYM</a>
+      <a class="related-link" href="/vs/sgov-vs-vymi.html">SGOV vs VYMI</a>
+      <a class="related-link" href="/vs/sgov-vs-sphy.html">SGOV vs SPHY</a>
+      <a class="related-link" href="/vs/sgov-vs-spyi.html">SGOV vs SPYI</a>
+    </div>
+  </div></section>
+<section class="section"><div class="container">
+    <h2>SPHY Comparisons</h2>
+    <div class="related-grid">
+      <a class="related-link" href="/vs/sphy-vs-voo.html">SPHY vs VOO</a>
+      <a class="related-link" href="/vs/sphy-vs-vig.html">SPHY vs VIG</a>
+      <a class="related-link" href="/vs/sphy-vs-vym.html">SPHY vs VYM</a>
+      <a class="related-link" href="/vs/sphy-vs-vymi.html">SPHY vs VYMI</a>
+      <a class="related-link" href="/vs/sphy-vs-spyi.html">SPHY vs SPYI</a>
+    </div>
+  </div></section>
+<section class="section"><div class="container">
+    <h2>SPYI Comparisons</h2>
+    <div class="related-grid">
+      <a class="related-link" href="/vs/spyi-vs-voo.html">SPYI vs VOO</a>
+      <a class="related-link" href="/vs/spyi-vs-vig.html">SPYI vs VIG</a>
+      <a class="related-link" href="/vs/spyi-vs-vym.html">SPYI vs VYM</a>
+      <a class="related-link" href="/vs/spyi-vs-vymi.html">SPYI vs VYMI</a>
+    </div>
+  </div></section>
+<section class="section"><div class="container">
+    <h2>VIG Comparisons</h2>
+    <div class="related-grid">
+      <a class="related-link" href="/vs/vig-vs-voo.html">VIG vs VOO</a>
+      <a class="related-link" href="/vs/vig-vs-vym.html">VIG vs VYM</a>
+      <a class="related-link" href="/vs/vig-vs-vymi.html">VIG vs VYMI</a>
+    </div>
+  </div></section>
+<section class="section"><div class="container">
+    <h2>VOO Comparisons</h2>
+    <div class="related-grid">
+      <a class="related-link" href="/vs/voo-vs-vym.html">VOO vs VYM</a>
+      <a class="related-link" href="/vs/voo-vs-vymi.html">VOO vs VYMI</a>
+    </div>
+  </div></section>
+<section class="section"><div class="container">
+    <h2>VYM Comparisons</h2>
+    <div class="related-grid">
+      <a class="related-link" href="/vs/vym-vs-vymi.html">VYM vs VYMI</a>
+    </div>
+  </div></section>
+</main>
+<footer><div class="container"><div class="footer-content">
+  <div class="footer-links">
+    <a href="/terms.html">Terms of Use</a>
+    <a href="/privacy.html">Privacy Policy</a>
+    <a href="/faq.html">FAQ</a>
+    <a href="/disclaimer.html">Disclaimer</a>
+  </div>
+  <div class="footer-disclaimer">
+    This site is 100% free and for entertainment purposes only. All data is curated from public sources and may be inaccurate or delayed.
+    Not financial advice. Past performance does not guarantee future results.
+  </div>
+  <p class="footer-copyright">© 2026 ReturnAtlas. All rights reserved.</p>
+</div></div></footer>
+</body>
+</html>

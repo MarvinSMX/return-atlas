@@ -1,0 +1,2245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-REPLACE_ME"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-REPLACE_ME');
+</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Real-time ETF total returns, dividend yields, and analytics. Free curated list of top dividend ETFs.">
+    <meta name="keywords" content="ETF, dividend ETFs, total returns, yield optimization">
+    <title>ReturnAtlas & Yields | YieldAtlas</title>
+
+    <link rel="canonical" href="https://returnatlas.com/">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:title" content="ReturnAtlas & Yields">
+    <meta property="og:description" content="Real-time ETF data with dividend yields and annualized returns. Free curated list of top dividend ETFs.">
+    <meta property="og:image" content="etf.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://returnatlas.com">
+
+    <!-- Twitter / X Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="ReturnAtlas & Yields">
+    <meta name="twitter:description" content="Real-time ETF data with dividend yields and annualized returns.">
+    <meta name="twitter:image" content="etf.png">
+    <meta name="twitter:site" content="@YieldAtlas">
+
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --dark-bg: #0A1F1E;
+            --surface-dark: #0F2A28;
+            --surface-light: #152D2A;
+            --green-primary: #10B981;
+            --green-light: #34D399;
+            --green-dark: #059669;
+            --white: #FFFFFF;
+            --text-primary: #FFFFFF;
+            --text-secondary: #E5E7EB;
+            --text-muted: #9CA3AF;
+            --border-color: rgba(16, 185, 129, 0.2);
+            --border-light: rgba(16, 185, 129, 0.15);
+            --success: #10B981;
+            --danger: #EF4444;
+            --accent-gold: #F59E0B;
+            --gold-light: #FBBF24;
+        }
+
+        html, body {
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        body {
+            font-family: 'Sora', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, var(--dark-bg) 0%, var(--surface-dark) 50%, var(--dark-bg) 100%);
+            background-attachment: fixed;
+            color: var(--text-primary);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            line-height: 1.6;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(16, 185, 129, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(16, 185, 129, 0.05) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 0 32px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ════════════════ HEADER/NAV ═══════════════ */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(10, 31, 30, 0.9);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-color);
+            padding: 16px 0;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .header-buttons {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, var(--green-light) 0%, var(--green-primary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            font-family: 'Sora', sans-serif;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .compare-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background: linear-gradient(135deg, var(--green-primary), var(--green-light));
+            color: var(--dark-bg);
+            font-weight: 800;
+            font-size: 14px;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 20px rgba(16, 185, 129, 0.4);
+            cursor: pointer;
+            border: none;
+            white-space: nowrap;
+        }
+
+        .compare-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 35px rgba(16, 185, 129, 0.6);
+        }
+
+        .matchups-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background: transparent;
+            color: var(--green-light);
+            font-weight: 800;
+            font-size: 14px;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            border: 1.5px solid var(--green-primary);
+            cursor: pointer;
+            white-space: nowrap;
+        }
+
+        .matchups-btn:hover {
+            transform: translateY(-2px);
+            background: rgba(16, 185, 129, 0.1);
+            box-shadow: 0 0 25px rgba(16, 185, 129, 0.35);
+        }
+
+        .premium-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #F59E0B, #FBBF24);
+            color: var(--dark-bg);
+            font-weight: 800;
+            font-size: 14px;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 20px rgba(245, 158, 11, 0.4);
+            cursor: pointer;
+            border: none;
+            white-space: nowrap;
+        }
+
+        .premium-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 35px rgba(245, 158, 11, 0.6);
+        }
+
+        /* ═══════════════ PRO PROMO — SLIM BAR ═══════════════ */
+        .pro-bar {
+            width: 90%;
+            max-width: 1000px;
+            margin: 24px auto 32px;
+            padding: 18px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.12), rgba(16, 185, 129, 0.05));
+            border: 1.5px solid rgba(245, 158, 11, 0.3);
+            border-radius: 14px;
+            text-decoration: none;
+            color: var(--text-primary);
+            transition: all 0.3s ease;
+        }
+
+        .pro-bar:hover {
+            border-color: var(--accent-gold);
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.18), rgba(16, 185, 129, 0.08));
+            box-shadow: 0 8px 32px rgba(245, 158, 11, 0.18);
+            transform: translateY(-2px);
+        }
+
+        .pro-bar-left {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            min-width: 0;
+        }
+
+        .pro-badge {
+            flex-shrink: 0;
+            background: var(--accent-gold);
+            color: var(--dark-bg);
+            font-size: 11px;
+            font-weight: 900;
+            letter-spacing: 1.5px;
+            padding: 5px 12px;
+            border-radius: 20px;
+        }
+
+        .pro-bar-copy strong {
+            display: block;
+            font-size: 16px;
+            font-weight: 800;
+            color: var(--accent-gold);
+            line-height: 1.3;
+            margin-bottom: 3px;
+        }
+
+        .pro-bar-copy span {
+            display: block;
+            font-size: 13.5px;
+            color: var(--text-secondary);
+            line-height: 1.45;
+        }
+
+        .pro-bar-cta {
+            flex-shrink: 0;
+            padding: 11px 22px;
+            background: linear-gradient(135deg, #F59E0B, #FBBF24);
+            color: var(--dark-bg);
+            font-weight: 800;
+            font-size: 14px;
+            border-radius: 10px;
+            white-space: nowrap;
+            box-shadow: 0 0 20px rgba(245, 158, 11, 0.35);
+            transition: all 0.3s ease;
+        }
+
+        .pro-bar:hover .pro-bar-cta {
+            box-shadow: 0 0 32px rgba(245, 158, 11, 0.55);
+        }
+
+        /* ═══════════════ PRO PROMO — FULL CARD ═══════════════ */
+        .pro-card-promo {
+            width: 90%;
+            max-width: 1000px;
+            margin: 24px auto 32px;
+            padding: 34px 28px;
+            display: block;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(16, 185, 129, 0.05));
+            border: 1.5px solid rgba(245, 158, 11, 0.3);
+            border-radius: 14px;
+            text-decoration: none;
+            color: var(--text-primary);
+            transition: all 0.3s ease;
+        }
+
+        .pro-card-promo:hover {
+            border-color: var(--accent-gold);
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.16), rgba(16, 185, 129, 0.08));
+            box-shadow: 0 8px 32px rgba(245, 158, 11, 0.18);
+            transform: translateY(-3px);
+        }
+
+        .pro-card-promo h3 {
+            font-size: 24px;
+            font-weight: 800;
+            margin: 14px 0 10px;
+            line-height: 1.25;
+            background: linear-gradient(135deg, #FBBF24 0%, var(--white) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .pro-card-promo p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            max-width: 620px;
+            margin: 0 auto 20px;
+            line-height: 1.6;
+        }
+
+        .pro-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 9px;
+            justify-content: center;
+            margin-bottom: 24px;
+        }
+
+        .pro-chips span {
+            padding: 8px 15px;
+            background: var(--surface-dark);
+            border: 1px solid rgba(245, 158, 11, 0.25);
+            border-radius: 999px;
+            color: #FBBF24;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12.5px;
+            font-weight: 700;
+        }
+
+        .pro-card-cta {
+            display: inline-block;
+            padding: 13px 30px;
+            background: linear-gradient(135deg, #F59E0B, #FBBF24);
+            color: var(--dark-bg);
+            font-weight: 800;
+            font-size: 15px;
+            border-radius: 10px;
+            box-shadow: 0 0 24px rgba(245, 158, 11, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .pro-card-promo:hover .pro-card-cta {
+            box-shadow: 0 0 38px rgba(245, 158, 11, 0.6);
+        }
+
+        @media (max-width: 760px) {
+            .pro-bar,
+            .pro-card-promo {
+                width: 100%;
+                max-width: none;
+                margin: 16px auto 24px;
+            }
+
+            .pro-bar {
+                flex-direction: column;
+                align-items: stretch;
+                text-align: center;
+                gap: 14px;
+                padding: 18px 18px;
+            }
+
+            .pro-bar-left {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .pro-bar-copy strong {
+                font-size: 15px;
+            }
+
+            .pro-bar-copy span {
+                font-size: 12.5px;
+            }
+
+            .pro-bar-cta {
+                text-align: center;
+                padding: 12px 20px;
+            }
+
+            .pro-card-promo {
+                padding: 26px 18px;
+            }
+
+            .pro-card-promo h3 {
+                font-size: 19px;
+            }
+
+            .pro-card-promo p {
+                font-size: 13px;
+            }
+
+            .pro-chips span {
+                font-size: 11.5px;
+                padding: 7px 12px;
+            }
+
+            .pro-card-cta {
+                font-size: 14px;
+                padding: 12px 24px;
+            }
+        }
+
+        /* ════════════════ HERO ═══════════════ */
+        .hero {
+            padding: 40px 0 8px;
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: clamp(36px, 5vw, 52px);
+            font-weight: 800;
+            letter-spacing: -1px;
+            margin-bottom: 12px;
+            line-height: 1.1;
+            background: linear-gradient(135deg, var(--green-light) 0%, var(--white) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 15px;
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+            font-weight: 400;
+            line-height: 1.6;
+            max-width: 750px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-subtitle strong {
+            color: var(--green-light);
+            font-weight: 700;
+        }
+
+        .hero-subtitle em {
+            color: var(--accent-gold);
+            font-style: italic;
+            font-size: 13px;
+            margin-top: 8px;
+            display: block;
+        }
+
+        .brought-by {
+            margin-top: 12px;
+            margin-bottom: 6px;
+        }
+
+        .brought-by-btn {
+            display: inline-block;
+            padding: 14px 32px;
+            background: linear-gradient(135deg, var(--green-primary), var(--green-light));
+            color: var(--dark-bg);
+            font-weight: 800;
+            font-size: 16px;
+            text-decoration: none;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 40px rgba(16, 185, 129, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            white-space: nowrap;
+            border: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            letter-spacing: 0.5px;
+        }
+
+        .brought-by-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .brought-by-btn:hover {
+            transform: translateY(-4px) scale(1.05);
+            box-shadow: 0 0 60px rgba(16, 185, 129, 0.8), 0 0 20px rgba(52, 211, 153, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+        }
+
+        .brought-by-btn:hover::before {
+            left: 100%;
+        }
+
+        .brought-by-btn:active {
+            transform: translateY(-2px) scale(1.02);
+        }
+
+        /* ════════════════ DASHBOARD ═══════════════ */
+        .dashboard-section {
+            margin: 12px 0 80px;
+        }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-title::before {
+            content: '📊';
+            font-size: 28px;
+        }
+
+        /* ═══════ CLICK HINT ═══════ */
+        .click-hint {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 14px;
+            color: var(--green-light);
+            background: rgba(16, 185, 129, 0.09);
+            border: 1px solid var(--border-color);
+            border-left: 3px solid var(--green-primary);
+            border-radius: 0 10px 10px 0;
+            padding: 12px 18px;
+            margin-bottom: 24px;
+            font-weight: 600;
+        }
+
+        .click-hint a {
+            color: var(--green-light);
+            font-weight: 800;
+        }
+
+        .filters-bar {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+            margin-bottom: 32px;
+            padding: 24px;
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.08), rgba(16, 185, 129, 0.04));
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            backdrop-filter: blur(10px);
+        }
+
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .filter-label {
+            font-size: 12px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        input[type="text"],
+        select {
+            padding: 12px 16px;
+            background: var(--surface-dark);
+            border: 1.5px solid var(--border-light);
+            color: var(--text-primary);
+            border-radius: 10px;
+            font-family: 'Sora', sans-serif;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            outline: none;
+        }
+
+        input[type="text"]::placeholder {
+            color: var(--text-muted);
+        }
+
+        input[type="text"]:focus,
+        select:focus {
+            background: var(--surface-light);
+            border-color: var(--green-primary);
+            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.15);
+        }
+
+        .reset-filter-btn {
+            padding: 12px 20px;
+            background: transparent;
+            border: 1.5px solid var(--green-primary);
+            color: var(--green-primary);
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            align-self: flex-end;
+        }
+
+        .reset-filter-btn:hover {
+            background: rgba(16, 185, 129, 0.1);
+            box-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
+        }
+
+        /* ════════════════ TABLE ════════════════ */
+        .table-container {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.06), rgba(16, 185, 129, 0.02));
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            overflow-x: auto;
+            overflow-y: visible;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .table-header-label {
+            font-size: 12px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--green-light);
+            font-weight: 700;
+            padding: 22px 28px 18px;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .table-header-label::before {
+            content: '💰';
+            font-size: 18px;
+        }
+
+        .loading-state {
+            padding: 80px 32px;
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 16px;
+        }
+
+        .loading-spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid var(--border-light);
+            border-top-color: var(--green-primary);
+            border-radius: 50%;
+            margin: 24px auto;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 16.8px;
+            min-width: 640px;
+        }
+
+        thead {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.12), rgba(16, 185, 129, 0.06));
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        th {
+            padding: 18px 14px;
+            text-align: left;
+            font-weight: 700;
+            font-size: 13.2px;
+            letter-spacing: 0.8px;
+            color: var(--green-light);
+            text-transform: uppercase;
+            cursor: pointer;
+            user-select: none;
+            transition: all 0.2s ease;
+            border-right: 1px solid var(--border-color);
+            white-space: nowrap;
+        }
+
+        th.center {
+            text-align: center;
+        }
+
+        th:last-child {
+            border-right: none;
+        }
+
+        th:hover {
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--white);
+        }
+
+        th.sort-asc::after {
+            content: ' ↑';
+            color: var(--accent-gold);
+        }
+
+        th.sort-desc::after {
+            content: ' ↓';
+            color: var(--accent-gold);
+        }
+
+        tbody tr {
+            border-bottom: 1px solid rgba(16, 185, 129, 0.1);
+            transition: all 0.25s ease;
+        }
+
+        /* ═══════ CLICKABLE ROWS ═══════ */
+        tbody tr.clickable-row {
+            cursor: pointer;
+        }
+
+        tbody tr.clickable-row:hover {
+            background: rgba(16, 185, 129, 0.1);
+            box-shadow: inset 3px 0 0 var(--green-primary);
+        }
+
+        tbody tr.clickable-row:hover .col-symbol {
+            color: var(--green-light);
+        }
+
+        tbody tr.clickable-row:hover .col-open {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .col-open {
+            text-align: center;
+            color: var(--green-light);
+            font-weight: 900;
+            font-size: 16px;
+            opacity: 0.25;
+            transform: translateX(-4px);
+            transition: all 0.25s ease;
+            min-width: 44px;
+        }
+
+        tbody tr:last-child {
+            border-bottom: none;
+        }
+
+        td {
+            padding: 14px 14px;
+            color: var(--text-primary);
+            font-family: 'Sora', sans-serif;
+        }
+
+        td.center {
+            text-align: center;
+        }
+
+        .col-symbol {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 15.6px;
+            font-weight: 900;
+            color: var(--white);
+            letter-spacing: 1px;
+            min-width: 60px;
+            transition: color 0.25s ease;
+        }
+
+        .col-symbol a,
+        .col-name a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .col-name {
+            color: var(--text-secondary);
+            font-weight: 500;
+            font-size: 15.6px;
+            min-width: 70px;
+        }
+
+        .col-yield {
+            font-weight: 700;
+            text-align: center;
+            color: var(--green-light);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 15.6px;
+            min-width: 75px;
+        }
+
+        .col-inception {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--text-secondary);
+            text-align: center;
+            font-size: 13.2px;
+            min-width: 85px;
+        }
+
+        .col-return {
+            font-weight: 700;
+            text-align: center;
+            font-size: 15.6px;
+            font-family: 'JetBrains Mono', monospace;
+            min-width: 80px;
+        }
+
+        .col-annual {
+            font-weight: 700;
+            text-align: center;
+            font-size: 15.6px;
+            font-family: 'JetBrains Mono', monospace;
+            min-width: 75px;
+        }
+
+        .return-positive {
+            color: var(--green-light);
+        }
+
+        .return-negative {
+            color: var(--danger);
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 80px 32px;
+            color: var(--text-secondary);
+            font-size: 16px;
+        }
+
+        /* ════════════════ POPULAR MATCHUPS ════════════════ */
+        .matchups-section {
+            margin: 0 0 60px;
+        }
+
+        .matchups-card {
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.08), rgba(16, 185, 129, 0.05));
+            border: 1.5px solid var(--border-color);
+            border-radius: 14px;
+            padding: 32px 28px;
+            text-align: center;
+        }
+
+        .matchups-kicker {
+            display: inline-block;
+            background: var(--accent-gold);
+            color: var(--dark-bg);
+            font-size: 10px;
+            font-weight: 900;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-bottom: 12px;
+        }
+
+        .matchups-title {
+            font-size: 24px;
+            font-weight: 800;
+            margin-bottom: 8px;
+            background: linear-gradient(135deg, var(--green-light) 0%, var(--white) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .matchups-sub {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-bottom: 22px;
+            max-width: 620px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .matchups-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .matchup-link {
+            display: inline-block;
+            padding: 9px 16px;
+            background: var(--surface-dark);
+            border: 1px solid var(--border-color);
+            border-radius: 999px;
+            color: var(--green-light);
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
+            font-size: 13px;
+            text-decoration: none;
+            transition: all 0.25s ease;
+        }
+
+        .matchup-link:hover {
+            border-color: var(--green-primary);
+            background: rgba(16, 185, 129, 0.12);
+            transform: translateY(-2px);
+        }
+
+        .matchups-all-btn {
+            display: inline-block;
+            padding: 12px 26px;
+            background: linear-gradient(135deg, var(--green-primary), var(--green-light));
+            color: var(--dark-bg);
+            font-weight: 800;
+            font-size: 14px;
+            text-decoration: none;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 24px rgba(16, 185, 129, 0.4);
+        }
+
+        .matchups-all-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 36px rgba(16, 185, 129, 0.6);
+        }
+
+        /* ════════════════ NETWORK SECTION ════════════════ */
+        .network-section-etf {
+            margin: 80px 0 40px;
+            padding: 60px 0;
+            background: linear-gradient(180deg, rgba(16, 185, 129, 0.04) 0%, transparent 100%);
+            border-top: 1px solid var(--border-color);
+        }
+
+        .section-divider {
+            text-align: center;
+            margin-bottom: 32px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            justify-content: center;
+        }
+
+        .section-divider span {
+            font-weight: 800;
+            font-size: 12px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--green-light);
+            background: var(--dark-bg);
+            padding: 0 16px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .section-divider::before,
+        .section-divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border-color), transparent);
+        }
+
+        .network-title {
+            font-size: 28px;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, var(--green-light) 0%, var(--text-primary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .network-subtitle {
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 15px;
+            margin-bottom: 32px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .site-cards-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+        }
+
+        @media (min-width: 640px) {
+            .site-cards-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 18px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .site-cards-grid {
+                grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+                gap: 20px;
+            }
+        }
+
+        .network-card {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.08), rgba(16, 185, 129, 0.04));
+            border: 1.5px solid var(--border-color);
+            border-radius: 14px;
+            padding: 20px 18px;
+            text-decoration: none;
+            color: var(--text-primary);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        @media (min-width: 640px) {
+            .network-card {
+                padding: 24px 20px;
+            }
+        }
+
+        .network-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 30% 30%, rgba(16, 185, 129, 0.1) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .network-card:hover {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(16, 185, 129, 0.08));
+            border-color: var(--green-primary);
+            box-shadow: 0 8px 32px rgba(16, 185, 129, 0.2), inset 0 0 0 1px rgba(16, 185, 129, 0.1);
+            transform: translateY(-4px);
+        }
+
+        .network-card.pro-card {
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(245, 158, 11, 0.05));
+            border-color: rgba(245, 158, 11, 0.3);
+        }
+
+        .network-card.pro-card:hover {
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.15), rgba(245, 158, 11, 0.1));
+            border-color: var(--accent-gold);
+            box-shadow: 0 8px 32px rgba(245, 158, 11, 0.2), inset 0 0 0 1px rgba(245, 158, 11, 0.1);
+        }
+
+        .card-pro-badge {
+            display: inline-block;
+            background: var(--accent-gold);
+            color: var(--dark-bg);
+            font-size: 10px;
+            font-weight: 900;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-bottom: 8px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .card-icon {
+            font-size: 32px;
+            line-height: 1;
+            margin-bottom: 12px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .card-name {
+            font-weight: 800;
+            font-size: 15px;
+            color: var(--green-light);
+            margin-bottom: 8px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .network-card.pro-card .card-name {
+            color: var(--accent-gold);
+        }
+
+        .card-desc {
+            font-size: 13px;
+            color: var(--text-secondary);
+            line-height: 1.5;
+            margin-bottom: 14px;
+            flex: 1;
+            position: relative;
+            z-index: 1;
+        }
+
+        .card-btn {
+            display: inline-block;
+            padding: 8px 16px;
+            background: rgba(16, 185, 129, 0.2);
+            color: var(--green-light);
+            font-weight: 700;
+            font-size: 12px;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+            position: relative;
+            z-index: 1;
+        }
+
+        .network-card:hover .card-btn {
+            background: var(--green-primary);
+            color: var(--dark-bg);
+        }
+
+        .network-card.pro-card .card-btn {
+            background: rgba(245, 158, 11, 0.2);
+            color: var(--accent-gold);
+        }
+
+        .network-card.pro-card:hover .card-btn {
+            background: var(--accent-gold);
+            color: var(--dark-bg);
+        }
+
+        /* ════════════════ FOOTER ════════════════ */
+        footer {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.08), rgba(16, 185, 129, 0.04));
+            border-top: 1px solid var(--border-color);
+            padding: 50px 0 30px;
+            margin-top: auto;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 0 32px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--green-light);
+        }
+
+        .footer-disclaimer {
+            font-size: 13px;
+            color: var(--text-muted);
+            max-width: 700px;
+            line-height: 1.5;
+        }
+
+        .footer-copyright {
+            color: var(--text-muted);
+            font-size: 13px;
+            white-space: nowrap;
+        }
+
+        /* ════════════════ RESPONSIVE ════════════════ */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 16px;
+            }
+
+            .header-content {
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            .header-buttons {
+                flex-direction: column;
+                width: 100%;
+                gap: 8px;
+            }
+
+            .compare-btn,
+            .matchups-btn,
+            .premium-btn {
+                padding: 8px 16px;
+                font-size: 12px;
+                width: 100%;
+                text-align: center;
+            }
+
+            .hero {
+                padding: 32px 0 20px;
+            }
+
+            .hero h1 {
+                font-size: 28px;
+            }
+
+            .hero-subtitle {
+                font-size: 13px;
+            }
+
+            .hero-subtitle em {
+                font-size: 12px;
+            }
+
+            .brought-by-btn {
+                padding: 10px 24px;
+                font-size: 14px;
+            }
+
+            .click-hint {
+                font-size: 12.5px;
+                padding: 10px 14px;
+            }
+
+            .filters-bar {
+                grid-template-columns: 1fr;
+                gap: 12px;
+                padding: 16px;
+                margin-bottom: 20px;
+            }
+
+            .reset-filter-btn {
+                align-self: flex-start;
+                padding: 10px 16px;
+                font-size: 12px;
+            }
+
+            .section-title {
+                font-size: 18px;
+                margin-bottom: 8px;
+            }
+
+            .section-title::before {
+                font-size: 20px;
+            }
+
+            .table-container {
+                border-radius: 10px;
+                margin-bottom: 20px;
+            }
+
+            .table-header-label {
+                padding: 16px 14px 12px;
+                font-size: 11px;
+                gap: 6px;
+            }
+
+            .table-header-label::before {
+                font-size: 14px;
+            }
+
+            table {
+                font-size: 14.4px;
+                min-width: 590px;
+            }
+
+            th {
+                padding: 12px 10px;
+                font-size: 12px;
+                letter-spacing: 0.5px;
+            }
+
+            td {
+                padding: 10px 10px;
+            }
+
+            .col-symbol {
+                font-size: 13.2px;
+                min-width: 50px;
+            }
+
+            .col-name {
+                font-size: 13.2px;
+                min-width: 70px;
+            }
+
+            .col-yield {
+                font-size: 13.2px;
+                min-width: 65px;
+            }
+
+            .col-inception {
+                font-size: 12px;
+                min-width: 75px;
+            }
+
+            .col-return {
+                font-size: 13.2px;
+                min-width: 70px;
+            }
+
+            .col-annual {
+                font-size: 13.2px;
+                min-width: 65px;
+            }
+
+            .col-open {
+                min-width: 34px;
+                opacity: 0.7;
+            }
+
+            .loading-state {
+                padding: 60px 24px;
+            }
+
+            .loading-spinner {
+                width: 30px;
+                height: 30px;
+                border-width: 2px;
+                margin: 16px auto;
+            }
+
+            .no-results {
+                padding: 60px 24px;
+                font-size: 14px;
+            }
+
+            .matchups-card {
+                padding: 24px 16px;
+            }
+
+            .matchups-title {
+                font-size: 20px;
+            }
+
+            .matchups-sub {
+                font-size: 13px;
+            }
+
+            .matchup-link {
+                font-size: 12px;
+                padding: 8px 13px;
+            }
+
+            .network-title {
+                font-size: 22px;
+            }
+
+            .network-subtitle {
+                font-size: 14px;
+            }
+
+            .site-cards-grid {
+                gap: 14px;
+            }
+
+            .network-card {
+                padding: 18px 16px;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                padding: 0 16px;
+                gap: 20px;
+            }
+
+            .footer-links {
+                justify-content: center;
+                gap: 15px;
+            }
+
+            .footer-links a {
+                font-size: 12px;
+            }
+
+            .footer-disclaimer {
+                font-size: 12px;
+                max-width: 100%;
+            }
+
+            .footer-copyright {
+                font-size: 12px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 12px;
+            }
+
+            .logo {
+                font-size: 16px;
+            }
+
+            .compare-btn,
+            .matchups-btn,
+            .premium-btn {
+                padding: 6px 12px;
+                font-size: 11px;
+            }
+
+            header {
+                padding: 12px 0;
+            }
+
+            .hero {
+                padding: 24px 0 16px;
+            }
+
+            .hero h1 {
+                font-size: 22px;
+                margin-bottom: 8px;
+            }
+
+            .hero-subtitle {
+                font-size: 12px;
+                margin-bottom: 8px;
+            }
+
+            .brought-by-btn {
+                padding: 8px 20px;
+                font-size: 12px;
+            }
+
+            .pro-bar-copy strong {
+                font-size: 14px;
+            }
+
+            .pro-bar-copy span {
+                font-size: 12px;
+            }
+
+            .pro-card-promo h3 {
+                font-size: 17px;
+            }
+
+            .pro-chips span {
+                font-size: 11px;
+                padding: 6px 11px;
+            }
+
+            .filters-bar {
+                padding: 12px;
+                gap: 10px;
+            }
+
+            .filter-label {
+                font-size: 11px;
+                margin-bottom: 6px;
+            }
+
+            input[type="text"],
+            select {
+                padding: 10px 12px;
+                font-size: 13px;
+            }
+
+            .reset-filter-btn {
+                padding: 8px 12px;
+                font-size: 11px;
+            }
+
+            .section-title {
+                font-size: 16px;
+            }
+
+            .section-title::before {
+                font-size: 18px;
+            }
+
+            table {
+                min-width: 540px;
+                font-size: 13.2px;
+            }
+
+            th {
+                padding: 10px 8px;
+                font-size: 10.8px;
+            }
+
+            td {
+                padding: 8px 8px;
+            }
+
+            .col-symbol {
+                font-size: 12px;
+                min-width: 45px;
+            }
+
+            .col-name {
+                font-size: 12px;
+                min-width: 70px;
+            }
+
+            .col-yield {
+                font-size: 12px;
+                min-width: 60px;
+            }
+
+            .col-inception {
+                font-size: 10.8px;
+                min-width: 70px;
+            }
+
+            .col-return {
+                font-size: 12px;
+                min-width: 65px;
+            }
+
+            .col-annual {
+                font-size: 12px;
+                min-width: 60px;
+            }
+
+            .loading-state {
+                padding: 40px 16px;
+                font-size: 14px;
+            }
+
+            .loading-spinner {
+                width: 25px;
+                height: 25px;
+                border-width: 2px;
+                margin: 12px auto;
+            }
+
+            .no-results {
+                padding: 40px 16px;
+                font-size: 13px;
+            }
+
+            .matchups-card {
+                padding: 20px 12px;
+            }
+
+            .matchups-title {
+                font-size: 17px;
+            }
+
+            .matchup-link {
+                font-size: 11px;
+                padding: 7px 11px;
+            }
+
+            .network-section-etf {
+                margin: 60px 0 30px;
+                padding: 40px 0;
+            }
+
+            .network-title {
+                font-size: 18px;
+            }
+
+            .section-divider span {
+                font-size: 10px;
+            }
+
+            .site-cards-grid {
+                gap: 12px;
+            }
+
+            .network-card {
+                padding: 16px 14px;
+            }
+
+            .card-icon {
+                font-size: 28px;
+            }
+
+            .card-name {
+                font-size: 14px;
+            }
+
+            .card-desc {
+                font-size: 12px;
+            }
+
+            footer {
+                padding: 32px 0 20px;
+            }
+
+            .footer-content {
+                padding: 0 12px;
+                gap: 16px;
+            }
+
+            .footer-links {
+                gap: 12px;
+            }
+
+            .footer-links a {
+                font-size: 11px;
+            }
+
+            .footer-disclaimer {
+                font-size: 11px;
+            }
+
+            .footer-copyright {
+                font-size: 11px;
+            }
+        }
+
+        /* ═══════════════ STICKY BOTTOM PRO BAR ═══════════════ */
+        .pro-sticky {
+            position: fixed;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 1200;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 18px;
+            padding: 13px 56px 13px 20px;
+            background: rgba(10, 31, 30, 0.97);
+            backdrop-filter: blur(18px);
+            border-top: 1.5px solid rgba(245, 158, 11, 0.45);
+            box-shadow: 0 -10px 34px rgba(0, 0, 0, 0.5);
+            transform: translateY(110%);
+            transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .pro-sticky.is-visible {
+            transform: translateY(0);
+        }
+
+        .ps-copy {
+            font-size: 15px;
+            font-weight: 800;
+            letter-spacing: 0.2px;
+            color: var(--white);
+            line-height: 1.3;
+            min-width: 0;
+        }
+
+        .ps-copy span {
+            color: var(--gold-light);
+        }
+
+        .ps-cta {
+            flex-shrink: 0;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 26px;
+            background: linear-gradient(135deg, #F59E0B, #FBBF24);
+            color: var(--dark-bg);
+            font-weight: 800;
+            font-size: 14.5px;
+            text-decoration: none;
+            border-radius: 9px;
+            box-shadow: 0 6px 20px rgba(245, 158, 11, 0.4);
+            transition: all 0.25s ease;
+            white-space: nowrap;
+        }
+
+        .ps-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 28px rgba(245, 158, 11, 0.6);
+        }
+
+        .ps-close {
+            position: absolute;
+            top: 50%;
+            right: 14px;
+            transform: translateY(-50%);
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            border: 1px solid var(--border-color);
+            background: transparent;
+            color: var(--text-muted);
+            font-size: 17px;
+            line-height: 1;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .ps-close:hover {
+            color: var(--white);
+            border-color: var(--green-primary);
+            background: rgba(16, 185, 129, 0.12);
+        }
+
+        body.pro-sticky-on {
+            padding-bottom: 76px;
+        }
+
+        @media (max-width: 620px) {
+            .pro-sticky {
+                flex-direction: column;
+                align-items: stretch;
+                text-align: center;
+                gap: 10px;
+                padding: 14px 16px 16px;
+            }
+            .ps-copy {
+                font-size: 13.5px;
+                padding-right: 30px;
+            }
+            .ps-cta {
+                justify-content: center;
+            }
+            .ps-close {
+                top: 12px;
+                transform: none;
+            }
+            body.pro-sticky-on {
+                padding-bottom: 128px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo" onclick="location.href='/'">📈 ReturnAtlas</div>
+                <div class="header-buttons">
+                    <a href="/etf/" class="matchups-btn">📋 ETF Scorecards</a>
+                    <a href="/vs/" class="matchups-btn">🥊 ETF Matchups</a>
+                    <a href="/compare.html" class="compare-btn">⚖️ Compare ETFs</a>
+                    <a href="https://YieldAtlasPRO.com" target="_blank" class="premium-btn">🌟 Premium</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- ═════════ HERO ═════════ -->
+        <section class="hero">
+            <div class="container">
+                <h1>ReturnAtlas.com</h1>
+                <p class="hero-subtitle">
+                    Top ReturnAtlas! FREE to use! Real-time ETF data with dividend yields & annualized returns!<br><br>
+                    <strong>Data is as accurate as possible but can be wrong!</strong><br><br>
+                    Brought to you by: 
+                </p>
+                <div class="brought-by">
+                    <a href="https://yieldatlas.com/" target="_blank" class="brought-by-btn">YieldAtlas</a>
+                </div>
+                <p class="hero-subtitle">
+                    <em>*This site/tool is for entertainment purposes ONLY! NOT financial advice! Not buy or sell signals!*</em>
+                </p>
+            </div>
+        </section>
+
+        <!-- ═════════ DASHBOARD ═════════ -->
+        <section class="dashboard-section">
+            <div class="container">
+
+                <!-- PRO PROMO — TOP -->
+                <a href="https://YieldAtlasPRO.com" target="_blank" class="pro-bar">
+                    <div class="pro-bar-left">
+                        <span class="pro-badge">PRO</span>
+                        <div class="pro-bar-copy">
+                            <strong>See the numbers this page doesn't show</strong>
+                            <span>Tax treatment, AUM, price decay, and advanced filtering — updated daily.</span>
+                        </div>
+                    </div>
+                    <span class="pro-bar-cta">Go PRO →</span>
+                </a>
+
+                <h2 class="section-title">ETF Database</h2>
+
+                <div class="click-hint">
+                    <span>👆</span>
+                    <span>Click any ETF row for its full scorecard — grade, income calculator, and head-to-head comparisons. <a href="/etf/">Browse all scorecards →</a></span>
+                </div>
+
+                <div class="filters-bar">
+                    <div class="filter-group">
+                        <label class="filter-label">🔍 Search ETFs</label>
+                        <input type="text" id="searchFilter" placeholder="Type ticker or name..." autocomplete="off">
+                    </div>
+                    <div class="filter-group">
+                        <label class="filter-label">💵 Dividend Yield</label>
+                        <select id="yieldFilter">
+                            <option value="">All Yields</option>
+                            <option value="0-3">0–3%</option>
+                            <option value="3-6">3–6%</option>
+                            <option value="6-10">6–10%</option>
+                            <option value="10+">10%+</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label class="filter-label">📊 Total Return</label>
+                        <select id="returnFilter">
+                            <option value="">All Returns</option>
+                            <option value="positive">Positive</option>
+                            <option value="negative">Negative</option>
+                        </select>
+                    </div>
+                    <button class="reset-filter-btn" id="resetBtn">↻ Reset Filters</button>
+                </div>
+
+                <div class="table-container">
+                    <span class="table-header-label">Complete ETF Analytics</span>
+                    <div id="loadingMsg" class="loading-state">
+                        <div class="loading-spinner"></div>
+                        <p>Loading data…</p>
+                    </div>
+                    <table id="etfTable" style="display: none;">
+                        <thead>
+                            <tr>
+                                <th onclick="sortTable(0)">Symbol</th>
+                                <th onclick="sortTable(1)">Name</th>
+                                <th onclick="sortTable(2)" class="center">Yield</th>
+                                <th onclick="sortTable(3)" class="center">Inception</th>
+                                <th onclick="sortTable(4)" class="center">Total Return %</th>
+                                <th onclick="sortTable(5)" class="center">Annualized Return %</th>
+                                <th class="center" style="cursor:default">Scorecard</th>
+                            </tr>
+                        </thead>
+                        <tbody id="etfBody"></tbody>
+                    </table>
+                    <div id="noResults" class="no-results" style="display: none;">
+                        <p>No ETFs match your filters. Try adjusting your search.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═════════ POPULAR MATCHUPS ═════════ -->
+        <section class="matchups-section">
+            <div class="container">
+                <div class="matchups-card">
+                    <div class="matchups-kicker">New</div>
+                    <h2 class="matchups-title">🥊 ETF vs ETF: 300+ Head-to-Head Comparisons</h2>
+                    <p class="matchups-sub">
+                        Every matchup compared by average annual total return since inception — updated daily. Start with a fan favorite:
+                    </p>
+                    <div class="matchups-links">
+                        <a href="/vs/schd-vs-vym.html" class="matchup-link">SCHD vs VYM</a>
+                        <a href="/vs/jepi-vs-jepq.html" class="matchup-link">JEPI vs JEPQ</a>
+                        <a href="/vs/jepi-vs-schd.html" class="matchup-link">JEPI vs SCHD</a>
+                        <a href="/vs/schd-vs-voo.html" class="matchup-link">SCHD vs VOO</a>
+                        <a href="/vs/qqqi-vs-spyi.html" class="matchup-link">QQQI vs SPYI</a>
+                        <a href="/vs/dgro-vs-schd.html" class="matchup-link">DGRO vs SCHD</a>
+                        <a href="/vs/jepq-vs-qyld.html" class="matchup-link">JEPQ vs QYLD</a>
+                        <a href="/vs/schd-vs-vig.html" class="matchup-link">SCHD vs VIG</a>
+                    </div>
+                    <a href="/vs/" class="matchups-all-btn">Browse All ETF Comparisons →</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- PRO PROMO — BOTTOM -->
+        <div class="container">
+            <a href="https://YieldAtlasPRO.com" target="_blank" class="pro-card-promo">
+                <span class="pro-badge">PRO</span>
+                <h3>The full ETF terminal, updated every day</h3>
+                <p>
+                    This page gives you yields and total returns. YieldAtlasPRO.com gives you everything else —
+                    the data set behind the whole network, in one filterable, sortable terminal.
+                </p>
+                <div class="pro-chips">
+                    <span>Dividend Yield</span>
+                    <span>Total Return</span>
+                    <span>Tax Treatment</span>
+                    <span>AUM</span>
+                    <span>Inception Date</span>
+                    <span>Price Decay</span>
+                    <span>Advanced Filtering</span>
+                    <span>Daily Updates</span>
+                </div>
+                <span class="pro-card-cta">Explore PRO →</span>
+            </a>
+        </div>
+
+        <!-- ═════════ NETWORK SECTION ═════════ -->
+        <section class="network-section-etf">
+            <div class="container">
+                <div class="section-divider">
+                    <span>Explore Our Dividend Network</span>
+                </div>
+                
+                <h2 class="network-title">More Dividend Investing Resources</h2>
+                <p class="network-subtitle">Built by dividend investors.  For dividend investors.</p>
+                
+                <div class="site-cards-grid">
+                    <a href="https://yieldatlas.com" class="network-card">
+                        <div class="card-icon">📊</div>
+                        <div class="card-name">YieldAtlas.com</div>
+                        <div class="card-desc">Rankings of the top 100 dividend ETFs by yield, growth, and reliability. Find your best fit.</div>
+                        <div class="card-btn">Browse Rankings →</div>
+                    </a>
+                    
+                    <a href="https://weeklypayout.com" target="_blank" class="network-card">
+                        <div class="card-icon">📅</div>
+                        <div class="card-name">WeeklyPayout.com</div>
+                        <div class="card-desc">Prefer weekly income? Discover the best ETFs that pay dividends every single week.</div>
+                        <div class="card-btn">See WeeklyPayout →</div>
+                    </a>
+                    
+                    <a href="https://monthlypayout.com" target="_blank" class="network-card">
+                        <div class="card-icon">📆</div>
+                        <div class="card-name">MonthlyPayout.com</div>
+                        <div class="card-desc">The ultimate guide to monthly dividend ETFs — match your income to your monthly bills.</div>
+                        <div class="card-btn">See MonthlyPayout →</div>
+                    </a>
+                    
+                    <a href="https://dividendstack.com" target="_blank" class="network-card">
+                        <div class="card-icon">🛠️</div>
+                        <div class="card-name">DividendStack.com</div>
+                        <div class="card-desc">Free calculators, screeners, and planning tools for dividend investors of every level.</div>
+                        <div class="card-btn">Try Free Tools →</div>
+                    </a>
+
+                    <a href="https://yieldatlaspro.com" target="_blank" class="network-card pro-card">
+                        <div class="card-pro-badge">Pro</div>
+                        <div class="card-icon">📊</div>
+                        <div class="card-name">YieldAtlasPro.com</div>
+                        <div class="card-desc">Deep data, advanced filters, tax grades, and daily-updated pro insights for serious dividend investors.</div>
+                        <div class="card-btn pro-btn">Explore Pro →</div>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+  
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-links">
+                    <a href="/etf/">ETF Scorecards</a>
+                    <a href="/vs/">ETF Comparisons</a>
+                    <a href="terms.html">Terms of Use</a>
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="faq.html">FAQ</a>
+                    <a href="disclaimer.html">Disclaimer</a>
+                </div>
+                
+                <div class="footer-disclaimer">
+                    This site is 100% free and for entertainment purposes only. All data is curated from public sources and may be inaccurate or delayed. 
+                    Not financial advice. Past performance does not guarantee future results.
+                </div>
+
+                <p class="footer-copyright">
+                    © 2026 ReturnAtlas. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ═══════════════ STICKY BOTTOM PRO BAR ═══════════════ -->
+    <div class="pro-sticky" id="proSticky" role="complementary" aria-label="PRO terminal offer">
+        <p class="ps-copy">🔓 Unlock <span>ALL</span> The ETF Data You NeED</p>
+        <a href="https://YieldAtlasPRO.com" target="_blank" class="ps-cta">Go PRO →</a>
+        <button class="ps-close" id="proStickyClose" aria-label="Dismiss PRO offer">✕</button>
+    </div>
+
+    <script>
+        const CSV_URL = 'data/seed.csv';
+
+        let allRows = [];
+        let allData = [];
+        let sortState = { col: 5, dir: 'desc' };
+
+        // Ticker → scorecard URL slug (must match generate-etf-pages.js)
+        function etfSlug(sym) {
+            return String(sym).toLowerCase().replace(/[^a-z0-9]/g, '');
+        }
+
+        function etfUrl(sym) {
+            return '/etf/' + etfSlug(sym) + '.html';
+        }
+
+        function calculateAnnualized(totalReturnStr, inceptionStr) {
+            try {
+                if (!inceptionStr || inceptionStr === 'N/A' || inceptionStr.trim() === '') return 'N/A';
+                
+                const total = parseFloat(totalReturnStr.replace('%', '').trim()) / 100;
+                
+                // Explicitly parse MM/DD/YYYY format
+                const dateParts = inceptionStr.trim().split('/');
+                if (dateParts.length !== 3) return 'N/A';
+                const month = parseInt(dateParts[0], 10) - 1; // 0-indexed
+                const day = parseInt(dateParts[1], 10);
+                const year = parseInt(dateParts[2], 10);
+                const incDate = new Date(year, month, day);
+                
+                const today = new Date();
+                const days = (today - incDate) / (1000 * 60 * 60 * 24);
+                const years = days / 365.25;
+                
+                if (years <= 0 || isNaN(years)) return 'N/A';
+                
+                const annualized = Math.pow(1 + total, 1 / years) - 1;
+                return (annualized * 100).toFixed(2) + '%';
+            } catch (e) {
+                return 'N/A';
+            }
+        }
+
+        function loadData() {
+            fetch(CSV_URL + '&t=' + Date.now())
+                .then(r => r.ok ? r.text() : Promise.reject())
+                .then(txt => renderTable(txt))
+                .catch(() => {
+                    document.getElementById('loadingMsg').innerHTML = '<p>Unable to load data. Please refresh.</p>';
+                });
+        }
+
+        function renderTable(txt) {
+            const lines = txt.split('\n');
+            const tbody = document.getElementById('etfBody');
+            tbody.innerHTML = '';
+            allRows = [];
+            allData = [];
+
+            for (let i = 1; i < lines.length; i++) {
+                const parts = lines[i].split(',').map(x => x.trim());
+                if (parts.length < 10 || !parts[0]) continue;
+
+                const symbol = parts[0];
+                const name = parts[1];
+                const yield_val = parts[3];
+                const return_val = parts[7];
+                const inception = parts[9] || 'N/A';
+                const annualAvg = calculateAnnualized(return_val, inception);
+                const targetUrl = etfUrl(symbol);
+
+                allData.push({ symbol, name, yield: yield_val, return: return_val, inception, annual: annualAvg });
+
+                const tr = document.createElement('tr');
+                tr.className = 'clickable-row';
+                tr.setAttribute('role', 'link');
+                tr.setAttribute('tabindex', '0');
+                tr.setAttribute('aria-label', symbol + ' scorecard');
+
+                // Whole row navigates to the scorecard page
+                tr.addEventListener('click', function (ev) {
+                    if (ev.target.closest('a')) return; // let real links do their thing
+                    window.location.href = targetUrl;
+                });
+                tr.addEventListener('keydown', function (ev) {
+                    if (ev.key === 'Enter' || ev.key === ' ') {
+                        ev.preventDefault();
+                        window.location.href = targetUrl;
+                    }
+                });
+
+                const tdSymbol = document.createElement('td');
+                tdSymbol.className = 'col-symbol';
+                const symbolLink = document.createElement('a');
+                symbolLink.href = targetUrl;
+                symbolLink.textContent = symbol;
+                tdSymbol.appendChild(symbolLink);
+                tr.appendChild(tdSymbol);
+
+                const tdName = document.createElement('td');
+                tdName.className = 'col-name';
+                const nameLink = document.createElement('a');
+                nameLink.href = targetUrl;
+                nameLink.textContent = name;
+                tdName.appendChild(nameLink);
+                tr.appendChild(tdName);
+
+                const tdYield = document.createElement('td');
+                tdYield.className = 'col-yield';
+                tdYield.textContent = yield_val;
+                tr.appendChild(tdYield);
+
+                const tdInception = document.createElement('td');
+                tdInception.className = 'col-inception';
+                tdInception.textContent = inception;
+                tr.appendChild(tdInception);
+
+                const tdReturn = document.createElement('td');
+                tdReturn.className = 'col-return';
+                const returnNum = parseFloat(return_val);
+                tdReturn.innerHTML = '<span class="' + (returnNum >= 0 ? 'return-positive' : 'return-negative') + '">' + return_val + '</span>';
+                tr.appendChild(tdReturn);
+
+                const tdAnnual = document.createElement('td');
+                tdAnnual.className = 'col-annual';
+                tdAnnual.textContent = annualAvg;
+                tr.appendChild(tdAnnual);
+
+                const tdOpen = document.createElement('td');
+                tdOpen.className = 'col-open';
+                tdOpen.textContent = '→';
+                tr.appendChild(tdOpen);
+
+                tbody.appendChild(tr);
+                allRows.push(tr);
+            }
+
+            document.getElementById('etfTable').style.display = 'table';
+            document.getElementById('loadingMsg').style.display = 'none';
+            
+            sortTable(sortState.col, sortState.dir);
+            applyFilters();
+        }
+
+        function sortTable(col, dir) {
+            if (typeof dir === 'string') {
+                sortState.dir = dir;
+            } else {
+                sortState.dir = sortState.col === col && sortState.dir === 'asc' ? 'desc' : 'asc';
+            }
+            sortState.col = col;
+
+            const tbody = document.getElementById('etfBody');
+            const rows = Array.from(tbody.querySelectorAll('tr'));
+
+            rows.sort((a, b) => {
+                let aVal = a.cells[col].textContent.trim();
+                let bVal = b.cells[col].textContent.trim();
+
+                if (col === 3) {
+                    const dateA = aVal === 'N/A' ? new Date(0) : new Date(aVal);
+                    const dateB = bVal === 'N/A' ? new Date(0) : new Date(bVal);
+                    return sortState.dir === 'asc' ? dateA - dateB : dateB - dateA;
+                }
+
+                if ([2, 4, 5].includes(col)) {
+                    aVal = parseFloat(aVal.replace(/[%$,]/g, '')) || 0;
+                    bVal = parseFloat(bVal.replace(/[%$,]/g, '')) || 0;
+                    return sortState.dir === 'asc' ? aVal - bVal : bVal - aVal;
+                }
+
+                return sortState.dir === 'asc' ? aVal.localeCompare(bVal) : bVal.localeCompare(aVal);
+            });
+
+            rows.forEach(r => tbody.appendChild(r));
+
+            document.querySelectorAll('th').forEach((th, i) => {
+                th.className = i === col ? 'sort-' + sortState.dir : (i >= 2 ? 'center' : '');
+            });
+
+            applyFilters();
+        }
+
+        function applyFilters() {
+            const searchTerm = document.getElementById('searchFilter').value.toLowerCase().trim();
+            const yieldFilter = document.getElementById('yieldFilter').value;
+            const returnFilter = document.getElementById('returnFilter').value;
+
+            let visibleCount = 0;
+
+            document.getElementById('etfBody').querySelectorAll('tr').forEach(row => {
+                const symbol = row.cells[0].textContent.toLowerCase();
+                const name = row.cells[1].textContent.toLowerCase();
+                const yieldVal = parseFloat(row.cells[2].textContent);
+                const returnVal = parseFloat(row.cells[4].textContent);
+
+                let show = true;
+
+                if (searchTerm) {
+                    const symbolMatch = symbol.includes(searchTerm);
+                    const nameMatch = name.includes(searchTerm);
+                    show = symbolMatch || nameMatch;
+                }
+
+                if (yieldFilter && show) {
+                    const [min, max] = yieldFilter === '10+' ? [10, 999] : yieldFilter.split('-').map(Number);
+                    if (yieldVal < min || yieldVal > (max || 999)) show = false;
+                }
+
+                if (returnFilter && show) {
+                    if (returnFilter === 'positive' && returnVal < 0) show = false;
+                    if (returnFilter === 'negative' && returnVal >= 0) show = false;
+                }
+
+                row.style.display = show ? '' : 'none';
+                if (show) visibleCount++;
+            });
+
+            document.getElementById('noResults').style.display = visibleCount === 0 ? 'block' : 'none';
+        }
+
+        document.getElementById('searchFilter').addEventListener('input', applyFilters);
+        document.getElementById('yieldFilter').addEventListener('change', applyFilters);
+        document.getElementById('returnFilter').addEventListener('change', applyFilters);
+
+        document.getElementById('resetBtn').addEventListener('click', function() {
+            document.getElementById('searchFilter').value = '';
+            document.getElementById('yieldFilter').value = '';
+            document.getElementById('returnFilter').value = '';
+            
+            sortState.col = 5;
+            sortState.dir = 'desc';
+            sortTable(5, 'desc');
+            
+            applyFilters();
+        });
+
+        // ═══════════════ STICKY BOTTOM PRO BAR ═══════════════
+        (function initProSticky() {
+            const bar = document.getElementById('proSticky');
+            const closeBtn = document.getElementById('proStickyClose');
+            if (!bar || !closeBtn) return;
+
+            let dismissed = false;
+            try { dismissed = sessionStorage.getItem('etr_pro_bar_dismissed') === '1'; } catch (e) {}
+            if (dismissed) return;
+
+            let shown = false;
+            function maybeShow() {
+                if (shown) return;
+                if (window.scrollY > 500) {
+                    shown = true;
+                    bar.classList.add('is-visible');
+                    document.body.classList.add('pro-sticky-on');
+                    window.removeEventListener('scroll', maybeShow);
+                }
+            }
+            window.addEventListener('scroll', maybeShow, { passive: true });
+            maybeShow();
+
+            closeBtn.addEventListener('click', function () {
+                bar.classList.remove('is-visible');
+                document.body.classList.remove('pro-sticky-on');
+                try { sessionStorage.setItem('etr_pro_bar_dismissed', '1'); } catch (e) {}
+            });
+        })();
+
+        loadData();
+    </script>
+</body>
+</html>
