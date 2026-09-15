@@ -747,7 +747,7 @@ ${urls.map(u => `  <url><loc>${u}</loc><lastmod>${today}</lastmod><changefreq>da
 
 async function main() {
   console.log('Fetching CSV…');
-  const res = await fetch(CSV_URL + '&t=' + Date.now());
+  const res = await fetch(CSV_URL + '?t=' + Date.now());
   if (!res.ok) throw new Error('CSV fetch failed: ' + res.status);
   const txt = await res.text();
 

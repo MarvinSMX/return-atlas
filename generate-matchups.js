@@ -579,7 +579,7 @@ async function main() {
     text = fs.readFileSync(process.env.LOCAL_CSV, 'utf8');
     console.log('(using LOCAL_CSV file for testing)');
   } else {
-    const res = await fetch(CSV_URL + '&t=' + Date.now());
+    const res = await fetch(CSV_URL + '?t=' + Date.now());
     if (!res.ok) throw new Error('CSV fetch failed: ' + res.status);
     text = await res.text();
   }

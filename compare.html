@@ -697,7 +697,7 @@ function fundBySymbol(sym) { return allFunds.find(f => f.symbol.toUpperCase() ==
 
 async function loadData() {
   try {
-    const res = await fetch(CSV_URL + '&t=' + Date.now());
+    const res = await fetch(CSV_URL + '?t=' + Date.now());
     const text = await res.text();
     allFunds = parseCSV(text);
     setupQuickButtons();
