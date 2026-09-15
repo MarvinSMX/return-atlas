@@ -524,7 +524,7 @@ function buildEtfPage(e, all) {
 <meta property="og:description" content="${esc(desc)}">
 <meta property="og:image" content="etf.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:site" content="@YieldAtlas">
+<meta name="twitter:site" content="@YieldAtlasETFs">
 <meta name="twitter:title" content="${esc(title)}">
 <meta name="twitter:description" content="${esc(desc)}">
 <meta name="twitter:image" content="etf.png">
